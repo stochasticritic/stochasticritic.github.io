@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: B.Tech in Electrical Engineering @ <a href='iith.ac.in'>IIT Hyderabad</a>. 
+subtitle: B.Tech in Electrical Engineering @ <a href='https://iith.ac.in'>IIT Hyderabad</a>. 
 
 profile:
   align: right
