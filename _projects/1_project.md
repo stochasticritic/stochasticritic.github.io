@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Agile autonomous flight in cluttered environments with safety constraints
-description: Ongoing work with <a href="https://people.iith.ac.in/m_vidyasagar/" >Dr. M Vidyasagar FRS</a> (IIT Hyderabad) and <a href="https://engineering.tamu.edu/mechanical/profiles/saripalli.html" >Dr. Srikanth Saripalli</a> (Texas A&M University), started as a part of the IROS 2022 Safe Robot Learning Competition)
+description: Ongoing work with [Dr. M Vidyasagar FRS](https://people.iith.ac.in/m_vidyasagar/) (IIT Hyderabad) and [Dr. Srikanth Saripalli](https://engineering.tamu.edu/mechanical/profiles/saripalli.html) (Texas A&M University), started as a part of the IROS 2022 Safe Robot Learning Competition)
 img: assets/img/proj1_1.jpg
 importance: 1
 category: Research Projects
