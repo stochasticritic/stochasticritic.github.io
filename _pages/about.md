@@ -19,3 +19,8 @@ profile:
 ---
 
 Hi! I'm, a senior undergraduate student at IIT Hyderabad. I am interested in research in Robotics.
+
+For accessing my projects and writing samples, kindly refer to <a href="https://tinyurl.com/sohamprojects" >this link (https://tinyurl.com/sohamprojects).</a>.
+
+
+
