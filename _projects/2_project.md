@@ -1,80 +1,35 @@
 ---
 layout: page
-title: project 2
-description: a project with a background image
-img: assets/img/3.jpg
+title: Reinforcement Learning for Autonomous Navigation of vehicles on uncertain terrain
+description: Work started as a part of the IROS 2022 Safe Robot Learning Competition)
+img: assets/img/proj1_1.jpg
 importance: 2
 category: Research Projects
 ---
+Word done with [Dr. M Vidyasagar FRS](https://people.iith.ac.in/m_vidyasagar/) (IIT Hyderabad) 
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+• The major problem that we tried to solve is online and local planning of UGVs for unstructured, uneven, and uncertain terrain.
+• Fitted the problem in a DeepRL pipeline and implemented the A3C algorithm in an end-to-end manner.
+• Added the feature for the operator to add user-defined obstacles. Using Octomaps for occupancy grid mapping. Tried to extend it to
+Truncated Signed Distance Field for representing terrain traversability heightmaps.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
+Follow <a href="https://github.com/stochasticritic/DeepRL-for-Autonomous-Navigation" >this repository</a> for more details.
+<!--
     ---
     layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
+    title: Agile autonomous flight in cluttered environments with safety constraints
+    description: The goal of this project is to achieve minimum time flight in an environment with gates and obstacles. Additional internal/external perturbations and disturbances are injected into the environment (gate positions, wind gusts).
+    img: /assets/img/proj1_1.jpg
     ---
-
-<div class="row">
+-->
+<div class="row justify-content-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/proj1_1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal its glory in the next row of images.
-
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+    The above fig. shows the path tracked by a crazflie quadrotor while abiding by the preimposed safety constraints
 </div>
 
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
 
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-```
-{% endraw %}
