@@ -2,7 +2,7 @@
 layout: page
 title: A data-acquisition robot for acoustic sensing & localization (Robot Audition)
 description: Developed a robot audition platform
-img: assets/img/proj3_1.png
+img: !(assets/img/proj3_1.png)
 importance: 3
 category: Research Projects
 ---
