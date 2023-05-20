@@ -2,7 +2,7 @@
 layout: page
 title: Reinforcement Learning for Autonomous Navigation of vehicles on uncertain terrain
 description: Implemented a DeepRL (A3C) pipeline
-img: assets/img/proj2_1.jpg
+img: assets/img/proj2_1.png
 importance: 2
 category: Research Projects
 ---
