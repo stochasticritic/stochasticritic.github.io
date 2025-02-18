@@ -96,35 +96,27 @@
 
           <div class="collapse navbar-collapse text-right" id="navbarNav">
             <ul class="navbar-nav ml-auto flex-nowrap">
-              <!-- "About" stays -->
+              <!-- "About" remains -->
               <li class="nav-item active">
                 <a class="nav-link" href="/">
                   about<span class="sr-only">(current)</span>
                 </a>
               </li>
-              <!-- Remove the blog, publications, repositories, teaching links -->
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="/blog/">blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/publications/">publications</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/repositories/">repositories</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/teaching/">teaching</a>
-              </li> -->
 
-              <!-- Keep or remove these based on your preference -->
-              <li class="nav-item">
-                <a class="nav-link" href="/projects/">projects</a>
-              </li>
+              <!-- "Blog, Publications, Repositories, Teaching" removed from the original code -->
+              <!-- "cv" also removed now -->
+              <!--
               <li class="nav-item">
                 <a class="nav-link" href="/cv/">cv</a>
               </li>
+              -->
 
-              <!-- Submenu stays or remove it entirely if you like -->
+              <!-- "Projects" stays or remove if you like -->
+              <li class="nav-item">
+                <a class="nav-link" href="/projects/">projects</a>
+              </li>
+
+              <!-- Submenu if you still want it -->
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -141,7 +133,7 @@
                   class="dropdown-menu dropdown-menu-right"
                   aria-labelledby="navbarDropdown"
                 >
-                  <!-- You can remove these if they refer to publications/projects -->
+                  <!-- If "publications/projects" should also be removed, comment out here -->
                   <a class="dropdown-item" href="/publications/">
                     publications
                   </a>
@@ -203,7 +195,7 @@
               <!-- Scrambled email link -->
               <p>
                 Email:
-                <strong><a id="emailLink" href="#">[loading email]</a></strong>
+                <strong><a id="emailLink" href="javascript:void(0)">[click to reveal]</a></strong>
               </p>
               <p>
                 GitHub:
@@ -230,7 +222,6 @@
             </div>
           </div>
 
-          <!-- Intro / Academic Info -->
           <div class="clearfix">
             <h4>Background & Research</h4>
             <p>
@@ -403,16 +394,19 @@
       };
     </script>
 
-    <!-- Email Scramble -->
+    <!-- Email Scramble: reveal on click -->
     <script type="text/javascript">
-      function unscrambleEmail() {
-        let user = "sohamkulkarniprof";
-        let domain = "gmail.com";
-        let link = document.getElementById("emailLink");
-        link.href = "mailto:" + user + "@" + domain;
-        link.innerHTML = user + "@" + domain;
-      }
-      unscrambleEmail();
+      window.addEventListener("DOMContentLoaded", function() {
+        const link = document.getElementById("emailLink");
+        link.addEventListener("click", function(e) {
+          e.preventDefault();
+          let user = "sohamkulkarniprof";
+          let domain = "gmail.com";
+          // Update href and text
+          link.href = "mailto:" + user + "@" + domain;
+          link.textContent = user + "@" + domain;
+        });
+      });
     </script>
   </body>
 </html>
