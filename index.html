@@ -61,7 +61,7 @@
       media=""
       id="highlight_theme_light"
     />
-    <link rel="shortcut icon" href="/assets/img/profile_pic.jpg" />
+    <link rel="shortcut icon" href="/assets/img/profile_pic.heic" />
     <link rel="stylesheet" href="/assets/css/main.css" />
     <link rel="canonical" href="https://stochasticritic.github.io//" />
     <link
@@ -167,8 +167,11 @@
             <span class="font-weight-bold">Soham</span> Kulkarni
           </h1>
           <p class="desc">
-            MS in Computer Science at
-            <a href="https://www.ucla.edu/" rel="external nofollow noopener" target="_blank"
+            Second-year MS student in Computer Science at
+            <a
+              href="https://www.ucla.edu/"
+              rel="external nofollow noopener"
+              target="_blank"
               >UCLA</a
             >.
           </p>
@@ -206,15 +209,42 @@
 
             <div class="address">
               <p>Los Angeles, CA</p>
-              <p>Email: <strong>sohamkulkarniprof@gmail.com</strong></p>
+              <!-- Scrambled email link -->
+              <p>
+                Email:
+                <strong><a id="emailLink" href="#">[loading email]</a></strong>
+              </p>
+              <p>
+                GitHub:
+                <strong>
+                  <a
+                    href="https://github.com/stochasticritic"
+                    target="_blank"
+                    rel="noopener"
+                    >stochasticritic</a
+                  >
+                </strong>
+              </p>
+              <p>
+                LinkedIn:
+                <strong>
+                  <a
+                    href="https://www.linkedin.com/in/sohamkulkarni11/"
+                    target="_blank"
+                    rel="noopener"
+                    >Soham Kulkarni</a
+                  >
+                </strong>
+              </p>
             </div>
           </div>
 
+          <!-- Intro / Academic Info -->
           <div class="clearfix">
+            <h4>Background & Research</h4>
             <p>
-              Hi! I'm Soham Kulkarni, a second-year MS student in Computer
-              Science at UCLA. I did my undergrad at IIT Hyderabad in Electrical
-              Engineering with a minor in Entrepreneurship.
+              I'm Soham Kulkarni. I did my undergrad at IIT Hyderabad in
+              Electrical Engineering with a minor in Entrepreneurship.
             </p>
             <p>
               My background lies in Robotics, particularly in Perception and
@@ -223,6 +253,8 @@
               low-level controls) for data acquisition and surveillance, as well
               as using various RL algorithms for learning navigation policies
               for these robots in simulation (under Dr. M Vidyasagar FRS).
+            </p>
+            <p>
               During my graduate studies at UCLA, I developed a close-range
               planning and navigation suite for the ARTEMIS humanoid robot (that
               won the Robocup '24 humanoids league) that is critical when the
@@ -232,12 +264,14 @@
               task-specific trajectories for robot manipulation tasks (under Dr.
               Yuchen Cui, UCLA Robot Intelligence Lab).
             </p>
+
+            <h4>Hobbies & Interests</h4>
             <p>
-              In my free time, I love to go on nature expeditions for wildlife
-              photography, read philosophy, paint, run, or hit the gym. Lately,
-              I've been training in various martial arts (Muay Thai, Brazilian
-              Jiu Jitsu, Kali, and Boxing), and I've recently picked up an
-              interest in tennis.
+              In my free time, I love going on nature expeditions for wildlife
+              photography, reading philosophy, painting, running, or hitting the
+              gym. Lately, I've been training in various martial arts (Muay
+              Thai, Brazilian Jiu Jitsu, Kali, and Boxing), and I've recently
+              picked up an interest in tennis.
             </p>
           </div>
         </article>
@@ -248,7 +282,10 @@
       <div class="container mt-0">
         © Copyright 2023 Soham Kulkarni.
         Powered by
-        <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener"
+        <a
+          href="https://jekyllrb.com/"
+          target="_blank"
+          rel="external nofollow noopener"
           >Jekyll</a
         >
         with
@@ -373,6 +410,18 @@
       window.onload = function () {
         setTimeout(progressBarSetup, 50);
       };
+    </script>
+
+    <!-- Email Scramble -->
+    <script type="text/javascript">
+      function unscrambleEmail() {
+        let user = "sohamkulkarniprof";
+        let domain = "gmail.com";
+        let link = document.getElementById("emailLink");
+        link.href = "mailto:" + user + "@" + domain;
+        link.innerHTML = user + "@" + domain;
+      }
+      unscrambleEmail();
     </script>
   </body>
 </html>
