@@ -103,20 +103,13 @@
                 </a>
               </li>
 
-              <!-- "Blog, Publications, Repositories, Teaching" removed from the original code -->
-              <!-- "cv" also removed now -->
-              <!--
-              <li class="nav-item">
-                <a class="nav-link" href="/cv/">cv</a>
-              </li>
-              -->
-
-              <!-- "Projects" stays or remove if you like -->
+              <!-- Removed blog, publications, repositories, teaching, cv -->
+              <!-- Keep "projects" or remove if you want -->
               <li class="nav-item">
                 <a class="nav-link" href="/projects/">projects</a>
               </li>
 
-              <!-- Submenu if you still want it -->
+              <!-- Submenu if you still want it, otherwise remove entirely -->
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -133,7 +126,7 @@
                   class="dropdown-menu dropdown-menu-right"
                   aria-labelledby="navbarDropdown"
                 >
-                  <!-- If "publications/projects" should also be removed, comment out here -->
+                  <!-- If these point to removed pages, you can remove them too -->
                   <a class="dropdown-item" href="/publications/">
                     publications
                   </a>
@@ -192,7 +185,7 @@
 
             <div class="address">
               <p>Los Angeles, CA</p>
-              <!-- Scrambled email link -->
+              <!-- Scrambled email link (click to reveal) -->
               <p>
                 Email:
                 <strong><a id="emailLink" href="javascript:void(0)">[click to reveal]</a></strong>
@@ -219,14 +212,33 @@
                   >
                 </strong>
               </p>
+              <p>
+                X:
+                <strong>
+                  <a
+                    href="https://x.com/stochasticritic"
+                    target="_blank"
+                    rel="noopener"
+                    >@stochasticritic</a
+                  >
+                </strong>
+              </p>
+
+              <!-- Quotation block -->
+              <blockquote class="mt-2" style="font-style: italic;">
+                “Stochasticritic—life’s randomness (stochastic) unfolds, while
+                the critic (ego) judges, veiling the true Self—until awareness
+                dissolves all illusions.”
+              </blockquote>
             </div>
           </div>
 
           <div class="clearfix">
             <h4>Background & Research</h4>
             <p>
-              I'm Soham Kulkarni. I did my undergrad at IIT Hyderabad in
-              Electrical Engineering with a minor in Entrepreneurship.
+              Hi!, I'm Soham. I did my undergrad at IIT Hyderabad in Electrical
+              Engineering with a minor in Entrepreneurship, and I'm presently
+              pursuing my Master's in CS at UCLA, researching in Robot Learning.
             </p>
             <p>
               My background lies in Robotics, particularly in Perception and
@@ -234,17 +246,42 @@
               I worked on developing autonomous mobile robots (hardware +
               low-level controls) for data acquisition and surveillance, as well
               as using various RL algorithms for learning navigation policies
-              for these robots in simulation (under Dr. M Vidyasagar FRS).
+              for these robots in simulation (under
+              <a
+                href="https://people.iith.ac.in/m_vidyasagar/"
+                target="_blank"
+                rel="noopener"
+                >Dr. M Vidyasagar FRS</a
+              >).
             </p>
             <p>
               During my graduate studies at UCLA, I developed a close-range
               planning and navigation suite for the ARTEMIS humanoid robot (that
               won the Robocup '24 humanoids league) that is critical when the
-              main vision pipeline fails or goes through a blackout (under Dr.
-              Dennis Hong, RoMeLa). Currently, I'm exploring effective action
-              representations for imitation learning and evaluating
-              task-specific trajectories for robot manipulation tasks (under Dr.
-              Yuchen Cui, UCLA Robot Intelligence Lab).
+              main vision pipeline fails or goes through a blackout (under
+              <a
+                href="https://www.romela.org/dr-dennis-hong/"
+                target="_blank"
+                rel="noopener"
+                >Dr. Dennis Hong</a
+              >,
+              <a
+                href="https://www.romela.org/"
+                target="_blank"
+                rel="noopener"
+                >RoMeLa</a
+              >). Currently, I'm exploring effective action representations for
+              imitation learning and evaluating task-specific trajectories for
+              robot manipulation tasks (under
+              <a href="https://yuchencui.cc/" target="_blank" rel="noopener"
+                >Dr. Yuchen Cui</a
+              >,
+              <a
+                href="https://ucla-robot-intelligence-lab.github.io/"
+                target="_blank"
+                rel="noopener"
+                >UCLA Robot Intelligence Lab</a
+              >).
             </p>
 
             <h4>Hobbies & Interests</h4>
@@ -402,7 +439,7 @@
           e.preventDefault();
           let user = "sohamkulkarniprof";
           let domain = "gmail.com";
-          // Update href and text
+          // Reveal the email upon click
           link.href = "mailto:" + user + "@" + domain;
           link.textContent = user + "@" + domain;
         });
