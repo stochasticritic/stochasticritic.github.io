@@ -8,13 +8,12 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Agile autonomous flight in cluttered environments with safety constraints | Soham Kulkarni</title>
+    <title>EKF &amp; Non-linear Least-squares SLAM | Soham Kulkarni</title>
 
     <meta name="author" content="Soham Kulkarni" />
-    <!-- Replaced old description line -->
     <meta
       name="description"
-      content="For the IROS 2022 Safe Robot Learning Competition"
+      content="For IEEE RAS Winter School for SLAM in Deformable Environments"
     />
     <meta
       name="keywords"
@@ -66,7 +65,7 @@
     <link rel="stylesheet" href="/assets/css/main.css" />
     <link
       rel="canonical"
-      href="https://stochasticritic.github.io/projects/1_project/"
+      href="https://stochasticritic.github.io/projects/2_project/"
     />
     <link
       rel="stylesheet"
@@ -83,7 +82,7 @@
     <header>
       <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
         <div class="container">
-          <!-- Replace brand with "Soham Kulkarni" link to about page -->
+          <!-- "Soham Kulkarni" brand => link to about -->
           <a class="navbar-brand title font-weight-lighter" href="/">
             <span class="font-weight-bold">Soham</span> Kulkarni
           </a>
@@ -143,165 +142,42 @@
       <div class="post">
         <header class="post-header">
           <h1 class="post-title">
-            Agile autonomous flight in cluttered environments with safety
-            constraints
+            EKF and Non-linear Least-squares Optimization Based SLAM
           </h1>
-          <!-- Replaced "Work started as a part..." => "For the IROS 2022..." -->
           <p class="post-description">
-            For the IROS 2022 Safe Robot Learning Competition
+            For IEEE RAS Winter School for SLAM in Deformable Environments
           </p>
         </header>
 
         <article>
-          <!-- "Ongoing work" => "Work done with" -->
           <p>
-            Work done with
-            <a
-              href="https://people.iith.ac.in/m_vidyasagar/"
-              rel="external nofollow noopener"
-              target="_blank"
-              >Dr. M Vidyasagar FRS</a
-            >
-            (IIT Hyderabad) and
-            <a
-              href="https://engineering.tamu.edu/mechanical/profiles/saripalli.html"
-              rel="external nofollow noopener"
-              target="_blank"
-              >Dr. Srikanth Saripalli</a
-            >
-            (Texas A&amp;M University)
-          </p>
-          <p>
-            The goal of this project is to achieve minimum-time flight in an
-            environment with gates and obstacles. Additional internal/external
-            perturbations and disturbances are injected into the environment
-            (gate positions, wind gusts).
+            Implemented EKF-based SLAM and Optimization-based SLAM (Non-linear
+            Least Squares) on the Victoria Park Dataset.
           </p>
 
-          <!-- Insert bullet points for AirSim experiments -->
-          <h4>AirSim Experiments</h4>
-          <ul>
-            <li>Experiments tried: Stereo matching &amp; obstacle detection</li>
-            <li>Reinforcement Learning approaches: DQN, PPO</li>
-            <li>Holistic Parameters: # of people, max speed, etc.</li>
-            <li>
-              Policy: Stop &amp; wait whenever obstacles are within 0.2m
-              distance
-            </li>
-            <li>
-              <strong>Reward definition example:</strong>
-              <ul>
-                <li>Forward in x direction: +1 × (V<sub>x</sub>)</li>
-                <li>Deviation in y direction: -1 × |y|</li>
-                <li>Collision penalty: -5</li>
-              </ul>
-            </li>
-            <li>Safe flight distance ~ 46.1m (slow speeds)</li>
-          </ul>
-
-          <!-- PPO Implementation details -->
-          <h4>PPO Implementation Details</h4>
-          <p>
-            <strong>Action Space:</strong>  
-            Let <em>f<sub>i</sub></em>, i ∈ [1,4] be the thrust for each motor.
-            <br />
-            <code>f_i = 1</code> (full power),
-            <code>f_i = 0</code> (off).  
-            Discretized steps in [0, 0.2, 0.4, 0.6, 0.8, 1] ^ 4.  
-            No added inertial disturbances yet.
-          </p>
-
-          <p>
-            <strong>Reward Function:</strong>  
-            R<sub>t</sub> = max(0, 1 – ‖x – x<sub>goal</sub>‖)
-            – C<sub>θ</sub>‖θ‖ – C<sub>ω</sub>‖ω‖
-            <br />
-            where the first term rewards proximity to the target, and
-            additional terms penalize spinning/rotations, etc.
-          </p>
-
-          <p>
-            Observations for our agent
-            <code>[cmdFullState(pos, vel, acc, yaw, omega)]</code>:
-          </p>
-          <ul>
-            <li><strong>pos:</strong> array-like of float[3]</li>
-            <li><strong>vel:</strong> array-like of float[3]</li>
-            <li><strong>acc:</strong> array-like of float[3]</li>
-            <li><strong>yaw:</strong> single float (radians)</li>
-            <li><strong>omega:</strong> array-like of float[3]</li>
-          </ul>
-
-          <!-- Table for success rates & times -->
-          <h4>Results (PPO, 50 seeds)</h4>
-          <table class="table table-sm table-bordered" style="max-width: 500px;">
-            <thead class="thead-light">
-              <tr>
-                <th>Level</th>
-                <th>Success Rate</th>
-                <th>Mean Time (sec)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>0 (non-adaptive)</td>
-                <td>100%</td>
-                <td>4.5</td>
-              </tr>
-              <tr>
-                <td>1 (adaptive)</td>
-                <td>84%</td>
-                <td>5.3</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p>
-            Follow
-            <a
-              href="https://github.com/stochasticritic/Agile-Autonomous-Flight-With-Safety-Constraints"
-              rel="external nofollow noopener"
-              target="_blank"
-              >this repository</a
-            >
-            for more details.
-          </p>
-
-          <div class="row justify-content-center">
-            <div class="col-sm mt-3 mt-md-0">
-              <figure>
-                <picture>
-                  <source
-                    class="responsive-img-srcset"
-                    media="(max-width: 480px)"
-                    srcset="/assets/img/proj1_1-480.webp"
-                  />
-                  <source
-                    class="responsive-img-srcset"
-                    media="(max-width: 800px)"
-                    srcset="/assets/img/proj1_1-800.webp"
-                  />
-                  <source
-                    class="responsive-img-srcset"
-                    media="(max-width: 1400px)"
-                    srcset="/assets/img/proj1_1-1400.webp"
-                  />
-                  <img
-                    src="/assets/img/proj1_1.jpg"
-                    class="img-fluid rounded z-depth-1"
-                    width="auto"
-                    height="auto"
-                    title="example image"
-                    onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
-                  />
-                </picture>
-              </figure>
+          <!-- Three image placeholders, no bullet lines for inputs -->
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <img
+                src="/assets/img/slam_image_placeholder1.png"
+                class="img-fluid rounded"
+                alt="Placeholder 1"
+              />
             </div>
-          </div>
-
-          <div class="caption">
-            The above figure shows the path tracked by a Crazyflie quadrotor
-            while abiding by preimposed safety constraints.
+            <div class="col-md-4 mb-3">
+              <img
+                src="/assets/img/slam_image_placeholder2.png"
+                class="img-fluid rounded"
+                alt="Placeholder 2"
+              />
+            </div>
+            <div class="col-md-4 mb-3">
+              <img
+                src="/assets/img/slam_image_placeholder3.png"
+                class="img-fluid rounded"
+                alt="Placeholder 3"
+              />
+            </div>
           </div>
         </article>
       </div>
@@ -392,7 +268,7 @@
       function progressBarSetup() {
         if ("max" in document.createElement("progress")) {
           initializeProgressElement();
-          $(document).on("scroll", function () {
+          $(document).on("scroll", function() {
             progressBar.attr({ value: getCurrentScrollPosition() });
           });
           $(window).on("resize", initializeProgressElement);
@@ -414,7 +290,7 @@
         progressBar.css({ top: e });
         progressBar.attr({
           max: getDistanceToScroll(),
-          value: getCurrentScrollPosition(),
+          value: getCurrentScrollPosition()
         });
       }
 
@@ -427,13 +303,11 @@
       }
 
       function getWidthPercentage() {
-        return (
-          (getCurrentScrollPosition() / getDistanceToScroll()) * 100
-        );
+        return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
       }
 
       const progressBar = $("#progress");
-      window.onload = function () {
+      window.onload = function() {
         setTimeout(progressBarSetup, 50);
       };
     </script>
