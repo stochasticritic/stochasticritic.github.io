@@ -63,7 +63,10 @@
     />
     <link rel="shortcut icon" href="/assets/img/profile_pic.jpg" />
     <link rel="stylesheet" href="/assets/css/main.css" />
-    <link rel="canonical" href="https://stochasticritic.github.io/projects/" />
+    <link
+      rel="canonical"
+      href="https://stochasticritic.github.io/projects/"
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/monokai.css"
@@ -125,10 +128,17 @@
                 <a class="nav-link" href="/">about</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="/projects/">projects<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/projects/">
+                  projects<span class="sr-only">(current)</span>
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/assets/pdf/soham_cv_feb25.pdf" target="_self" rel="noopener">CV</a>
+                <a
+                  class="nav-link"
+                  href="/assets/pdf/soham_cv_feb25.pdf"
+                  target="_self"
+                  rel="noopener"
+                >CV</a>
               </li>
               <li class="toggle-container">
                 <button id="light-toggle" title="Change theme">
@@ -157,140 +167,198 @@
         </header>
 
         <article>
-          <!-- We remove 'Research Projects' & 'Personal Projects' headings, combine into a single grid -->
           <div class="projects-container">
-            <!-- Project 1 -->
+            <!-- Nine placeholders, linking to /projects/x_project/ -->
+            <!-- 1 -->
             <div class="grid-item">
               <a href="/projects/1_project/">
                 <div class="card hoverable">
                   <figure>
-                    <picture>
-                      <source
-                        class="responsive-img-srcset"
-                        media="(max-width: 480px)"
-                        srcset="/assets/img/proj1_1-480.webp"
-                      />
-                      <source
-                        class="responsive-img-srcset"
-                        media="(max-width: 800px)"
-                        srcset="/assets/img/proj1_1-800.webp"
-                      />
-                      <source
-                        class="responsive-img-srcset"
-                        media="(max-width: 1400px)"
-                        srcset="/assets/img/proj1_1-1400.webp"
-                      />
-                      <img
-                        src="/assets/img/proj1_1.jpg"
-                        width="auto"
-                        height="auto"
-                        alt="project thumbnail"
-                        onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
-                      />
-                    </picture>
+                    <img
+                      src="/assets/img/proj1_1.jpg"
+                      width="auto"
+                      height="auto"
+                      alt="Project 1"
+                    />
                   </figure>
                   <div class="card-body">
-                    <h2 class="card-title">Agile autonomous flight</h2>
+                    <h2 class="card-title">Project 1</h2>
                     <p class="card-text">
-                      Agile flight in cluttered environments with safety
-                      constraints (IROS 2022 Safe Robot Learning Competition)
+                      Description for project #1
                     </p>
                   </div>
                 </div>
               </a>
             </div>
-
-            <!-- Project 2 -->
+            <!-- 2 -->
             <div class="grid-item">
               <a href="/projects/2_project/">
                 <div class="card hoverable">
                   <figure>
-                    <picture>
-                      <source
-                        class="responsive-img-srcset"
-                        media="(max-width: 480px)"
-                        srcset="/assets/img/proj2_1-480.webp"
-                      />
-                      <source
-                        class="responsive-img-srcset"
-                        media="(max-width: 800px)"
-                        srcset="/assets/img/proj2_1-800.webp"
-                      />
-                      <source
-                        class="responsive-img-srcset"
-                        media="(max-width: 1400px)"
-                        srcset="/assets/img/proj2_1-1400.webp"
-                      />
-                      <img
-                        src="/assets/img/proj2_1.png"
-                        width="auto"
-                        height="auto"
-                        alt="project thumbnail"
-                        onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
-                      />
-                    </picture>
-                  </figure>
-                  <div class="card-body">
-                    <h2 class="card-title">Reinforcement Learning for Navigation</h2>
-                    <p class="card-text">
-                      DeepRL (A3C) pipeline for autonomous vehicles on uncertain terrain
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="grid-item">
-              <a href="/projects/n_project/">
-                <div class="card hoverable">
-                  <figure>
-                    <picture>
-                      <source
-                        class="responsive-img-srcset"
-                        media="(max-width: 480px)"
-                        srcset="/assets/img/3-480.webp"
-                      />
-                      <source
-                        class="responsive-img-srcset"
-                        media="(max-width: 800px)"
-                        srcset="/assets/img/3-800.webp"
-                      />
-                      <source
-                        class="responsive-img-srcset"
-                        media="(max-width: 1400px)"
-                        srcset="/assets/img/3-1400.webp"
-                      />
-                      <img
-                        src="/assets/img/3.jpg"
-                        width="auto"
-                        height="auto"
-                        alt="project thumbnail"
-                        onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
-                      />
-                    </picture>
+                    <img
+                      src="/assets/img/proj2_1.png"
+                      width="auto"
+                      height="auto"
+                      alt="Project 2"
+                    />
                   </figure>
                   <div class="card-body">
                     <h2 class="card-title">Project 2</h2>
-                    <p class="card-text">A project with a background image</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="grid-item">
-              <a href="/projects/3_project/">
-                <div class="card hoverable">
-                  <div class="card-body">
-                    <h2 class="card-title">Data-acquisition robot</h2>
                     <p class="card-text">
-                      Robot audition platform for acoustic sensing &amp; localization
+                      Description for project #2
                     </p>
                   </div>
                 </div>
               </a>
             </div>
+            <!-- 3 -->
+            <div class="grid-item">
+              <a href="/projects/3_project/">
+                <div class="card hoverable">
+                  <figure>
+                    <img
+                      src="/assets/img/3.jpg"
+                      width="auto"
+                      height="auto"
+                      alt="Project 3"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <h2 class="card-title">Project 3</h2>
+                    <p class="card-text">
+                      Description for project #3
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- 4 -->
+            <div class="grid-item">
+              <a href="/projects/4_project/">
+                <div class="card hoverable">
+                  <figure>
+                    <img
+                      src="/assets/img/proj4_placeholder.jpg"
+                      width="auto"
+                      height="auto"
+                      alt="Project 4"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <h2 class="card-title">Project 4</h2>
+                    <p class="card-text">
+                      Description for project #4
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- 5 -->
+            <div class="grid-item">
+              <a href="/projects/5_project/">
+                <div class="card hoverable">
+                  <figure>
+                    <img
+                      src="/assets/img/proj5_placeholder.jpg"
+                      width="auto"
+                      height="auto"
+                      alt="Project 5"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <h2 class="card-title">Project 5</h2>
+                    <p class="card-text">
+                      Description for project #5
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- 6 -->
+            <div class="grid-item">
+              <a href="/projects/6_project/">
+                <div class="card hoverable">
+                  <figure>
+                    <img
+                      src="/assets/img/proj6_placeholder.jpg"
+                      width="auto"
+                      height="auto"
+                      alt="Project 6"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <h2 class="card-title">Project 6</h2>
+                    <p class="card-text">
+                      Description for project #6
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- 7 -->
+            <div class="grid-item">
+              <a href="/projects/7_project/">
+                <div class="card hoverable">
+                  <figure>
+                    <img
+                      src="/assets/img/proj7_placeholder.jpg"
+                      width="auto"
+                      height="auto"
+                      alt="Project 7"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <h2 class="card-title">Project 7</h2>
+                    <p class="card-text">
+                      Description for project #7
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- 8 -->
+            <div class="grid-item">
+              <a href="/projects/8_project/">
+                <div class="card hoverable">
+                  <figure>
+                    <img
+                      src="/assets/img/proj8_placeholder.jpg"
+                      width="auto"
+                      height="auto"
+                      alt="Project 8"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <h2 class="card-title">Project 8</h2>
+                    <p class="card-text">
+                      Description for project #8
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- 9 -->
+            <div class="grid-item">
+              <a href="/projects/9_project/">
+                <div class="card hoverable">
+                  <figure>
+                    <img
+                      src="/assets/img/proj9_placeholder.jpg"
+                      width="auto"
+                      height="auto"
+                      alt="Project 9"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <h2 class="card-title">Project 9</h2>
+                    <p class="card-text">
+                      Description for project #9
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
           </div> <!-- end .projects-container -->
         </article>
       </div>
@@ -300,7 +368,10 @@
       <div class="container mt-0">
         © Copyright 2023 Soham Kulkarni.
         Powered by
-        <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener"
+        <a
+          href="https://jekyllrb.com/"
+          target="_blank"
+          rel="external nofollow noopener"
           >Jekyll</a
         >
         with
@@ -378,7 +449,7 @@
       function progressBarSetup() {
         if ("max" in document.createElement("progress")) {
           initializeProgressElement();
-          $(document).on("scroll", function() {
+          $(document).on("scroll", function () {
             progressBar.attr({ value: getCurrentScrollPosition() });
           });
           $(window).on("resize", initializeProgressElement);
@@ -417,7 +488,7 @@
       }
 
       const progressBar = $("#progress");
-      window.onload = function() {
+      window.onload = function () {
         setTimeout(progressBarSetup, 50);
       };
     </script>
