@@ -1,0 +1,29 @@
+---
+description: Project context for this Jekyll al-folio academic site
+alwaysApply: true
+---
+
+# stochasticritic.github.io
+
+This repo is a **Jekyll** site using the **al-folio** theme (academic/homepage theme for GitHub Pages).
+
+## Stack
+
+- **Jekyll** – static site generator
+- **Liquid** – templating in layouts and includes
+- **Markdown** – content in `_pages/`, blog posts
+- **HTML/CSS/JS** – in `assets/`, layouts, and generated output
+
+## Key paths
+
+- `_config.yml` – Jekyll config (site title, baseurl, plugins, etc.)
+- `_pages/` – Markdown pages (home, about, etc.)
+- `assets/` – CSS, JS, images, PDFs (`assets/img/`, `assets/css/`, `assets/js/`, `assets/pdf/`)
+- `blog/` – blog post output (often generated from `_posts/` in source)
+- `index.html`, `publications/`, `projects/`, `teaching/`, `cv/` – main sections
+
+## Conventions
+
+- Edit content in Markdown where possible; use Liquid only when needed.
+- Images: prefer WebP variants in `assets/img/` (e.g. `*-480.webp`, `*-800.webp`).
+- Keep al-folio theme structure in mind when changing layouts or styles.
