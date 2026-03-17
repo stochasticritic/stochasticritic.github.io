@@ -3,79 +3,18 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Stereo vision &amp; planning for ARTEMIS | Soham Kulkarni</title>
-
+    <title>Close-Range Stereo Planning for ARTEMIS | Soham Kulkarni</title>
     <meta name="author" content="Soham Kulkarni" />
-    <meta
-      name="description"
-      content="For RoboCup 2024 Humanoids league (Winning project)"
-    />
-    <meta
-      name="keywords"
-      content="jekyll, jekyll-theme, academic-website, portfolio-website"
-    />
+    <meta name="description" content="Close-range planning and navigation suite for the ARTEMIS humanoid robot at RoboCup 2024." />
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY="
-      crossorigin="anonymous"
-    />
-    <!-- MDBootstrap -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css"
-      integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
-      crossorigin="anonymous"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
-      integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4="
-      crossorigin="anonymous"
-    />
-    <!-- Academicons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css"
-      integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg="
-      crossorigin="anonymous"
-    />
-    <!-- Google Fonts -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons"
-    />
-    <!-- Pygments Themes -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css"
-      media=""
-      id="highlight_theme_light"
-    />
-    <link rel="shortcut icon" href="/assets/img/profile_pic.jpg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="/assets/img/prof_pic.jpg" />
     <link rel="stylesheet" href="/assets/css/main.css" />
-    <link
-      rel="canonical"
-      href="https://stochasticritic.github.io/projects/2_project/"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/monokai.css"
-      media="none"
-      id="highlight_theme_dark"
-    />
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
+    <link rel="stylesheet" href="/assets/css/theme.css" />
   </head>
 
   <body class="fixed-top-nav">
@@ -85,141 +24,109 @@
           <a class="navbar-brand title font-weight-lighter" href="/">
             <span class="font-weight-bold">Soham</span> Kulkarni
           </a>
-
-          <button
-            class="navbar-toggler collapsed ml-auto"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar top-bar"></span>
             <span class="icon-bar middle-bar"></span>
             <span class="icon-bar bottom-bar"></span>
           </button>
-
           <div class="collapse navbar-collapse text-right" id="navbarNav">
             <ul class="navbar-nav ml-auto flex-nowrap">
-              <li class="nav-item">
-                <a class="nav-link" href="/">about</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/projects/">projects</a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="/assets/pdf/soham_cv.pdf"
-                  target="_self"
-                  rel="noopener"
-                >
-                  CV
-                </a>
-              </li>
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
-              </li>
+              <li class="nav-item"><a class="nav-link" href="/">about</a></li>
+              <li class="nav-item"><a class="nav-link" href="/projects/">projects</a></li>
+              <li class="nav-item"><a class="nav-link" href="/assets/pdf/soham_cv.pdf" target="_self" rel="noopener">CV</a></li>
             </ul>
           </div>
         </div>
       </nav>
-
       <progress id="progress" value="0">
-        <div class="progress-container">
-          <span class="progress-bar"></span>
-        </div>
+        <div class="progress-container"><span class="progress-bar"></span></div>
       </progress>
     </header>
 
     <div class="container mt-5">
       <div class="post">
         <header class="post-header">
-          <h1 class="post-title">
-            Stereo vision and planning for the ARTEMIS humanoid robot
-          </h1>
+          <h1 class="post-title">Close-Range Stereo Planning &amp; Navigation for ARTEMIS</h1>
           <p class="post-description">
-            For RoboCup 2024 Humanoids league (Winning project)
+            RoboCup 2024 Humanoids League (Adult Size) &mdash; 1st Place &mdash; RoMeLa, UCLA
           </p>
         </header>
 
         <article>
           <p>
-            <strong>Features of the proximity package (Inference runs at 60 Hz):</strong>
+            Developed the <strong>proximity</strong> package for the ARTEMIS humanoid robot, a close-range planning and navigation suite that runs at <strong>60 Hz</strong> and serves as a critical fallback when the primary vision pipeline fails or encounters blackout scenarios during competitive matches. This work was part of RoMeLa's winning entry at the <strong>RoboCup 2024 Humanoids League (Adult Size)</strong> held in Eindhoven, Netherlands.
+          </p>
+
+          <h4>System Architecture</h4>
+          <p>
+            The proximity package comprises three major components: a <strong>stereo image pre-processing</strong> pipeline, the <strong>main depth processing loop</strong>, and an <strong>inference recorder</strong> for diagnostics. Raw depth data from a ZED stereo camera is processed through a series of geometric filters, connected-component analysis, and coordinate transformations to produce obstacle bounding boxes in real-time.
+          </p>
+
+          <h4>Stereo Image Pre-processing</h4>
+          <p>
+            The <code>DepthHandler</code> module handles raw depth data from the ZED stereo camera through the following pipeline:
           </p>
           <ul>
-            <li>
-              <strong>Connected Component Analysis for Object Detection:</strong>
-              The module performs an infinite component analysis using union-find
-              on the depth map from the ZED stereo camera to detect the k closest
-              objects in the field of view, limited to two objects in this
-              implementation.
-            </li>
-            <li>
-              <strong>Feature Extraction &amp; Reference Frame Conversion:</strong>
-              It calculates key attributes (width, height, distance, angle) of
-              detected objects and converts these measurements to different robot
-              reference frames as required by other components.
-            </li>
-            <li>
-              <strong>Adaptive Thresholding Based on Context:</strong> The
-              threshold for detection dynamically adjusts based on the neck angle
-              and field location (e.g., reducing threshold when looking down at
-              corners to avoid detecting the ground or body parts as obstacles).
-            </li>
-            <li>
-              <strong>HALO Mode for Vision Failures:</strong> In blackout
-              scenarios (e.g., severe occlusion by other robots), it switches to
-              a fallback HALO mode, looking down at the ground at a specific neck
-              angle to identify open navigation paths.
-            </li>
-            <li>
-              <strong>Integration with Other Modules:</strong> The component is
-              optimized to work seamlessly with the mid-level planner,
-              localization system, and high-level planner to ensure smooth
-              operation in dynamic environments.
-            </li>
+            <li><strong>Downsampling &amp; FOV masking:</strong> The depth map is downsampled by a configurable factor, vertical angles are computed per pixel, and a field-of-view mask is applied to reject regions outside the camera's effective cone.</li>
+            <li><strong>Floor distance calculation:</strong> Using the known camera height and neck pitch angle, the system computes the expected floor distance at each pixel column. Depth values within a tolerance band of this expected distance are rejected as ground plane.</li>
+            <li><strong>Green field filtering:</strong> An HSV-based mask removes the green playing field from the RGB frame, preventing the field surface from being detected as an obstacle.</li>
+            <li><strong>Region hiding:</strong> Based on the robot's current neck pitch and yaw angles, portions of the depth image corresponding to the robot's own body or irrelevant regions are masked out.</li>
           </ul>
 
-          <h4>The algorithm is as follows:</h4>
-          
-          <!-- Single image placeholder with caption -->
-          <div class="row">
-            <div class="col-md-12 mb-3">
-              <img
-                src="/assets/img/artemis_1.png"
-                class="img-fluid rounded"
-                alt="Algorithm Schematic"
-              />
-              <p class="mt-1"><em>[Connected-components with union find algorithm]</em></p>
-            </div>
-          </div>
+          <h4>Connected Component Analysis for Object Detection</h4>
+          <p>
+            The core detection algorithm performs connected component analysis on the filtered depth map using a <strong>Union-Find</strong> data structure with 8-connectivity. The algorithm identifies contiguous regions of valid depth values and extracts the <em>k</em> closest objects (limited to two in the competition implementation).
+          </p>
+          <p>
+            For each detected component, the module computes bounding boxes and extracts key attributes: width, height, distance, and bearing angle. An <strong>infinite-component analysis</strong> pass separately handles NaN and infinite depth values, identifying large contiguous regions of sensor failure that may indicate occluding objects at very close range.
+          </p>
 
-          <div class="row">
-            <div class="col-md-12 mb-3">
-              <img
-                src="/assets/img/artemis_2.png"
-                class="img-fluid rounded"
-                alt="Algorithm Schematic"
-              />
-              <p class="mt-1"><em>[Infinite Components Analysis Algorithm]</em></p>
-            </div>
+          <h4>Coordinate Transformations</h4>
+          <p>
+            Detected obstacle positions are converted from the camera frame to the robot body frame through a chain of transformations involving the neck yaw/pitch angles and the known camera mounting offset. This pipeline uses Euler-to-rotation-matrix conversion:
+          </p>
+          <div class="equation">
+            \[
+            \mathbf{p}_{\text{body}} = R_z(\psi) \cdot R_y(\theta) \cdot \mathbf{p}_{\text{cam}} + \mathbf{t}_{\text{mount}}
+            \]
           </div>
+          <p>
+            where \(\psi\) and \(\theta\) are the neck yaw and pitch angles, \(\mathbf{p}_{\text{cam}}\) is the obstacle position in camera coordinates, and \(\mathbf{t}_{\text{mount}}\) is the camera mounting offset.
+          </p>
 
-          <!-- Two more image placeholders with captions -->
-          <div class="row">
+          <h4>Bounding Box Fusion</h4>
+          <p>
+            Overlapping or adjacent bounding boxes are merged using a combination of <strong>IoU thresholding</strong>, coverage analysis, and x-coordinate proximity checks. This prevents a single obstacle from being reported as multiple detections when it spans multiple depth discontinuities.
+          </p>
+
+          <h4>HALO Mode &amp; Integration</h4>
+          <p>
+            In severe occlusion scenarios (e.g., the robot's camera is blocked by another robot), the system switches to a fallback <strong>HALO mode</strong>. The robot looks down at the ground at a specific neck angle to identify open navigation paths using the depth map, enabling safe blind navigation.
+          </p>
+          <p>
+            The proximity package integrates seamlessly with ARTEMIS's mid-level planner, localization system, and high-level strategy planner, providing real-time obstacle information for dynamic path planning during matches.
+          </p>
+
+          <h4>Key Specifications</h4>
+          <table>
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td>Inference rate</td><td>60 Hz</td></tr>
+            <tr><td>Depth threshold</td><td>3.0 m (configurable)</td></tr>
+            <tr><td>Detection objects</td><td>2 closest objects</td></tr>
+            <tr><td>Min detection area</td><td>1350 px&sup2;</td></tr>
+            <tr><td>Max detection width</td><td>0.7 m</td></tr>
+            <tr><td>Depth tolerance (floor)</td><td>0.3 m</td></tr>
+          </table>
+
+          <div class="row mt-4">
             <div class="col-md-6 mb-3">
-              <img
-                src="/assets/img/artemis_3.png"
-                class="img-fluid rounded"
-                alt="ARTEMIS Image 1"
-              />
-              <p class="mt-1"><em>[Close-range object detection on humanoid]</em></p>
+              <img src="/assets/img/artemis_robot.jpg" class="img-fluid rounded" alt="ARTEMIS humanoid robot" />
+              <p class="mt-1"><em>ARTEMIS humanoid robot in the lab gantry at RoMeLa</em></p>
+            </div>
+            <div class="col-md-6 mb-3">
+              <img src="/assets/img/artemis_closerange.jpg" class="img-fluid rounded" alt="Close-range object detection" />
+              <p class="mt-1"><em>Close-range obstacle detection during a match at RoboCup 2024</em></p>
             </div>
           </div>
         </article>
@@ -228,130 +135,37 @@
 
     <footer class="fixed-bottom">
       <div class="container mt-0">
-        © Copyright 2023 Soham Kulkarni.
-        Powered by
-        <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener"
-          >Jekyll</a
-        >
-        with
-        <a
-          href="https://github.com/alshedivat/al-folio"
-          rel="external nofollow noopener"
-          target="_blank"
-          >al-folio</a
-        >
-        theme. Hosted by
-        <a
-          href="https://pages.github.com/"
-          target="_blank"
-          rel="external nofollow noopener"
-          >GitHub Pages</a
-        >.
+        &copy; 2025 Soham Kulkarni. Hosted by
+        <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
       </div>
     </footer>
 
-    <!-- Scripts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js"
-      integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
-      integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI="
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"
-      defer
-    ></script>
-    <script src="/assets/js/masonry.js" type="text/javascript" defer></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"
-      integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM="
-      crossorigin="anonymous"
-      defer
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous" defer></script>
     <script src="/assets/js/zoom.js" defer></script>
-    <script src="/assets/js/common.js" defer></script>
+    <script type="text/javascript">window.MathJax = { tex: { tags: "ams" } };</script>
+    <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" defer></script>
 
-    <!-- MathJax -->
     <script type="text/javascript">
-      window.MathJax = { tex: { tags: "ams" } };
-    </script>
-    <script
-      type="text/javascript"
-      id="MathJax-script"
-      src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"
-      defer
-    ></script>
-    <!-- Polyfill -->
-    <script
-      src="https://polyfill.io/v3/polyfill.min.js?features=es6"
-      defer
-    ></script>
-
-    <!-- Progress Bar Setup -->
-    <script type="text/javascript">
+      const progressBar = $("#progress");
       function progressBarSetup() {
         if ("max" in document.createElement("progress")) {
-          initializeProgressElement();
-          $(document).on("scroll", function () {
-            progressBar.attr({ value: getCurrentScrollPosition() });
+          let e = $("#navbar").outerHeight(true);
+          $("body").css({"padding-top": e});
+          progressBar.css({top: e});
+          progressBar.attr({max: $(document).height() - $(window).height(), value: $(window).scrollTop()});
+          $(document).on("scroll", function() { progressBar.attr({value: $(window).scrollTop()}); });
+          $(window).on("resize", function() {
+            let e = $("#navbar").outerHeight(true);
+            $("body").css({"padding-top": e});
+            progressBar.css({top: e});
+            progressBar.attr({max: $(document).height() - $(window).height()});
           });
-          $(window).on("resize", initializeProgressElement);
-        } else {
-          resizeProgressBar();
-          $(document).on("scroll", resizeProgressBar);
-          $(window).on("resize", resizeProgressBar);
         }
       }
-
-      function getCurrentScrollPosition() {
-        return $(window).scrollTop();
-      }
-
-      function initializeProgressElement() {
-        let e = $("#navbar").outerHeight(true);
-        $("body").css({ "padding-top": e });
-        $("progress-container").css({ "padding-top": e });
-        progressBar.css({ top: e });
-        progressBar.attr({
-          max: getDistanceToScroll(),
-          value: getCurrentScrollPosition(),
-        });
-      }
-
-      function getDistanceToScroll() {
-        return $(document).height() - $(window).height();
-      }
-
-      function resizeProgressBar() {
-        progressBar.css({ width: getWidthPercentage() + "%" });
-      }
-
-      function getWidthPercentage() {
-        return (
-          (getCurrentScrollPosition() / getDistanceToScroll()) * 100
-        );
-      }
-
-      const progressBar = $("#progress");
-      window.onload = function () {
-        setTimeout(progressBarSetup, 50);
-      };
+      window.onload = function() { setTimeout(progressBarSetup, 50); };
     </script>
   </body>
 </html>

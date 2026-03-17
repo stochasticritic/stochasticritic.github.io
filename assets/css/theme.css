@@ -1,0 +1,319 @@
+/* ============================================
+   THEME: Minimal Dark Portfolio
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* --- Color System --- */
+:root {
+  --global-bg-color: #0d0d0d;
+  --global-code-bg-color: rgba(230, 57, 70, 0.06);
+  --global-text-color: #d4d4d4;
+  --global-text-color-light: #777;
+  --global-theme-color: #e63946;
+  --global-hover-color: #2ec4b6;
+  --global-footer-bg-color: #080808;
+  --global-footer-text-color: #555;
+  --global-footer-link-color: #888;
+  --global-distill-app-color: #777;
+  --global-divider-color: rgba(255, 255, 255, 0.06);
+  --global-card-bg-color: #141414;
+}
+
+html[data-theme=dark] {
+  --global-bg-color: #0d0d0d;
+  --global-code-bg-color: rgba(230, 57, 70, 0.06);
+  --global-text-color: #d4d4d4;
+  --global-text-color-light: #777;
+  --global-theme-color: #e63946;
+  --global-hover-color: #2ec4b6;
+  --global-footer-bg-color: #080808;
+  --global-footer-text-color: #555;
+  --global-footer-link-color: #888;
+  --global-distill-app-color: #777;
+  --global-divider-color: rgba(255, 255, 255, 0.06);
+  --global-card-bg-color: #141414;
+}
+
+/* --- Typography --- */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.post-title {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+pre, code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.875em;
+}
+
+/* --- Hide Theme Toggle --- */
+.toggle-container {
+  display: none !important;
+}
+
+/* --- Navbar --- */
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background-color: rgba(13, 13, 13, 0.88) !important;
+}
+
+.navbar.navbar-light .navbar-nav .nav-item .nav-link {
+  font-weight: 400;
+  font-size: 0.9rem;
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+}
+
+.navbar-toggler .icon-bar {
+  background-color: #d4d4d4 !important;
+}
+
+/* --- Cards --- */
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 8px !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(230, 57, 70, 0.25) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card .card-body {
+  padding: 1.5rem;
+}
+
+.card .card-title {
+  font-size: 1rem !important;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.card .card-text {
+  font-size: 0.8rem;
+  color: var(--global-text-color-light);
+  line-height: 1.5;
+}
+
+.card-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #2ec4b6;
+  margin-bottom: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid rgba(46, 196, 182, 0.2);
+  border-radius: 3px;
+}
+
+/* --- Section Headers --- */
+article h3 {
+  color: #e0e0e0 !important;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+article h4 {
+  color: #2ec4b6 !important;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(46, 196, 182, 0.15);
+}
+
+/* --- Links --- */
+a {
+  transition: color 0.2s ease;
+}
+
+.projects a {
+  text-decoration: none;
+}
+
+.projects a:hover {
+  text-decoration: none;
+}
+
+.projects a:hover .card-title {
+  color: var(--global-theme-color) !important;
+}
+
+/* --- Profile --- */
+.profile img {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.profile .address {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+}
+
+/* --- Footer --- */
+footer.fixed-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* --- Blockquote --- */
+blockquote {
+  border-left: 2px solid #e63946 !important;
+  background: rgba(230, 57, 70, 0.04) !important;
+  border-radius: 0 4px 4px 0;
+  padding: 0.75em 1.25em !important;
+}
+
+/* --- Progress Bar --- */
+progress::-webkit-progress-value {
+  background-color: #e63946;
+}
+
+progress::-moz-progress-bar {
+  background-color: #e63946;
+}
+
+/* --- Images in articles --- */
+article img {
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+article video {
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* --- Table styling --- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+table th {
+  background: rgba(230, 57, 70, 0.08);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid rgba(230, 57, 70, 0.2);
+}
+
+table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* --- Lists in articles --- */
+article ul, article ol {
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* --- Post description --- */
+.post-description {
+  color: var(--global-text-color-light);
+  font-style: italic;
+}
+
+/* --- Equations --- */
+.equation {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+/* --- Selection color --- */
+::selection {
+  background: rgba(230, 57, 70, 0.3);
+  color: #fff;
+}
+
+/* --- Scrollbar (webkit) --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* --- Grid item fixes --- */
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.grid-item .card {
+  flex: 1;
+}
+
+/* --- Strong/Bold accent --- */
+article strong {
+  color: #e0e0e0;
+}
+
+/* --- Code blocks --- */
+pre {
+  background-color: #1a1a1a !important;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 1rem !important;
+}
+
+code {
+  color: #e63946;
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 768px) {
+  .card .card-body {
+    padding: 1.25rem;
+  }
+  .card .card-title {
+    font-size: 0.95rem !important;
+  }
+}

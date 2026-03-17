@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Fall Recovery Controller for Humanoid Robots | Soham Kulkarni</title>
+    <meta name="author" content="Soham Kulkarni" />
+    <meta name="description" content="Hierarchical balance and fall recovery controllers for humanoid robots using capture-point FSMs in MuJoCo." />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="/assets/img/prof_pic.jpg" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+  </head>
+
+  <body class="fixed-top-nav">
+    <header>
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/">
+            <span class="font-weight-bold">Soham</span> Kulkarni
+          </a>
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+              <li class="nav-item"><a class="nav-link" href="/">about</a></li>
+              <li class="nav-item"><a class="nav-link" href="/projects/">projects</a></li>
+              <li class="nav-item"><a class="nav-link" href="/assets/pdf/soham_cv.pdf" target="_self" rel="noopener">CV</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <progress id="progress" value="0">
+        <div class="progress-container"><span class="progress-bar"></span></div>
+      </progress>
+    </header>
+
+    <div class="container mt-5">
+      <div class="post">
+        <header class="post-header">
+          <h1 class="post-title">Fall Recovery Controller for Humanoid Robots</h1>
+          <p class="post-description">
+            Hierarchical balance &amp; recovery via capture-point FSMs in MuJoCo
+          </p>
+        </header>
+
+        <article>
+          <p>
+            Designed and implemented a progressive suite of four balance and fall-recovery controllers for the <strong>v0H humanoid robot</strong> in MuJoCo simulation. The controllers build on each other in a progression from minimal standing to full-body dynamic balance with fall recovery, inspired by human balance recovery strategies: ankle, hip, stepping, and protective reflexes.
+          </p>
+
+          <h4>Design Philosophy</h4>
+          <p>
+            The system is organized as a <strong>capability progression</strong> where each controller adds new modules on top of the previous one:
+          </p>
+          <ul>
+            <li><strong>Controller C &rarr; A &rarr; B &rarr; D</strong>, from minimal robust standing to full-body dynamic balance</li>
+            <li>Each level adds disturbance coverage while preserving the stability guarantees of prior levels</li>
+            <li>All controllers use the <strong>Capture Point</strong> (CP) as the primary lateral stability predictor:</li>
+          </ul>
+          <div class="equation">
+            \[
+            x_{\mathrm{CP}} = x_{\mathrm{COM}} + \frac{\dot{x}_{\mathrm{COM}}}{\omega_0}, \quad \omega_0 = \sqrt{\frac{g}{h_{\mathrm{COM}}}}
+            \]
+          </div>
+
+          <h4>Controller C &mdash; Minimal Robust Standing</h4>
+          <p>
+            Foundation layer with tight PD control and a <strong>60% torque-rate clamp</strong> to suppress limit-cycle oscillations. A single static standing pose validates kinematics and joint sign conventions. On contact loss, all torques are zeroed to let gravity settle the robot.
+          </p>
+          <ul>
+            <li>Conservative gains: \(K_p = 15{-}30\), \(K_d = 1.5{-}3.0\) per joint group</li>
+            <li>Safety: torque limited to 60% of actuator max, rate-limited at 15% change per step</li>
+            <li>Handles gentle perturbations only (&lt;0.1 m push)</li>
+          </ul>
+
+          <h4>Controller A &mdash; Layered Reflex Cascade</h4>
+          <p>
+            Introduces a <strong>three-tier reflex hierarchy</strong> mirroring human balance recovery:
+          </p>
+          <ul>
+            <li><strong>Ankle strategy</strong> (\(|\delta| < 0.02\)): small roll corrections via ankle PD</li>
+            <li><strong>Hip strategy</strong> (\(|\delta| < 0.07\)): hip abduction on the support leg + contralateral squat + ankle correction</li>
+            <li><strong>Stepping strategy</strong> (\(|\delta| < 0.25\)): adaptive step with length \(l = K_{\text{step}} \cdot |\delta|\), clipped to the physical leg reach (0.55 m)</li>
+          </ul>
+          <p>
+            A <strong>0.15 s dwell timer</strong> between FSM transitions prevents mode-flapping under oscillatory disturbances. If the stepping strategy fails to reduce error within 50 ms, the controller automatically falls back to the hip strategy.
+          </p>
+
+          <h4>Controller B &mdash; Full Fall-Recovery Pipeline</h4>
+          <p>
+            Extends the reflex cascade with trajectory-free fall handling and a complete stand-up sequence:
+          </p>
+          <ul>
+            <li><strong>FALLING:</strong> Detected when pelvis height drops below 0.33 m or vertical velocity exceeds 0.8 m/s. The robot bends knees and arms to lower COM and prepare for impact.</li>
+            <li><strong>IMPACT:</strong> On ground contact (3+ contact points), stiffness is reduced and damping increased to absorb energy.</li>
+            <li><strong>TRIPOD:</strong> Stable three-point stance with controlled hip/knee targets.</li>
+            <li><strong>STAND-UP:</strong> A 2-second scripted sequence through half-kneel to full standing, using staged joint waypoints at 0.4 s intervals.</li>
+          </ul>
+          <p>
+            A <code>TelemetryBuffer</code> logs state, capture-point error, and COM-BoS margin at each timestep for post-hoc analysis.
+          </p>
+
+          <h4>Controller D &mdash; Full-Body Dynamic Balance</h4>
+          <p>
+            The most capable controller, employing <strong>five coordinated strategies</strong> activated by capture-point error thresholds:
+          </p>
+          <table>
+            <tr><th>Strategy</th><th>CP Error Threshold</th><th>Action</th></tr>
+            <tr><td>Ankle</td><td>&lt; 5 cm</td><td>Ankle roll/pitch torques</td></tr>
+            <tr><td>Hip</td><td>&lt; 12 cm</td><td>Hip abduction + weight shift</td></tr>
+            <tr><td>Arm swing</td><td>&lt; 15 cm</td><td>Counter-momentum arm motion</td></tr>
+            <tr><td>Torso lean</td><td>&lt; 20 cm</td><td>Torso pitch/roll compensation</td></tr>
+            <tr><td>Stepping</td><td>&lt; 25 cm</td><td>Lateral/frontal recovery step</td></tr>
+            <tr><td>Emergency</td><td>&gt; 40 cm or COM &darr;</td><td>Pre-impact pose &rarr; recovery sequence</td></tr>
+          </table>
+          <p>
+            The FSM transitions between <strong>STANDING &rarr; BALANCING &rarr; STEPPING &rarr; EMERGENCY</strong> states, with automatic downshifting as CP error decreases. Gains are auto-scaled during BALANCING and STEPPING states (recovery gain factor of 2&times;).
+          </p>
+
+          <h4>Performance Summary</h4>
+          <table>
+            <tr><th>Metric</th><th>C</th><th>A</th><th>B</th><th>D</th></tr>
+            <tr><td>FSM states</td><td>1</td><td>4</td><td>11</td><td>6&ndash;7</td></tr>
+            <tr><td>Capture-point logic</td><td>&mdash;</td><td>Lateral</td><td>Lateral + predictive</td><td>Lateral + stepping</td></tr>
+            <tr><td>Impact mitigation</td><td>&mdash;</td><td>&mdash;</td><td>Knees + arms</td><td>Pre-impact pose</td></tr>
+            <tr><td>Max push survived</td><td>0.1 m</td><td>0.25 m CP</td><td>0.5 m fall + get-up</td><td>0.35 m CP</td></tr>
+            <tr><td>Peak torque</td><td>&lt;20 Nm</td><td>&lt;60 Nm</td><td>&lt;120 Nm</td><td>&lt;200 Nm</td></tr>
+          </table>
+          <p style="margin-top: 1rem;">
+            In a 40-second stress test with aggressive stochastic perturbations, Controller D maintained <strong>62% standing, 38% active balancing, and 0% falls</strong>, with a mean capture-point error of 0.012 m.
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        &copy; 2025 Soham Kulkarni. Hosted by
+        <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous" defer></script>
+    <script src="/assets/js/zoom.js" defer></script>
+    <script type="text/javascript">window.MathJax = { tex: { tags: "ams" } };</script>
+    <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" defer></script>
+
+    <script type="text/javascript">
+      const progressBar = $("#progress");
+      function progressBarSetup() {
+        if ("max" in document.createElement("progress")) {
+          let e = $("#navbar").outerHeight(true);
+          $("body").css({"padding-top": e});
+          progressBar.css({top: e});
+          progressBar.attr({max: $(document).height() - $(window).height(), value: $(window).scrollTop()});
+          $(document).on("scroll", function() { progressBar.attr({value: $(window).scrollTop()}); });
+          $(window).on("resize", function() {
+            let e = $("#navbar").outerHeight(true);
+            $("body").css({"padding-top": e});
+            progressBar.css({top: e});
+            progressBar.attr({max: $(document).height() - $(window).height()});
+          });
+        }
+      }
+      window.onload = function() { setTimeout(progressBarSetup, 50); };
+    </script>
+  </body>
+</html>

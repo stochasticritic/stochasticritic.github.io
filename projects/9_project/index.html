@@ -3,79 +3,18 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Enhancing RAG Systems for CRAG Meta KDD | Soham Kulkarni</title>
-
     <meta name="author" content="Soham Kulkarni" />
-    <meta
-      name="description"
-      content="Course project for CS 245: Big Data Analytics"
-    />
-    <meta
-      name="keywords"
-      content="jekyll, jekyll-theme, academic-website, portfolio-website"
-    />
+    <meta name="description" content="Enhanced RAG pipeline for the CRAG Meta KDD competition with dense retrieval, reranking, and time-aware query processing." />
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY="
-      crossorigin="anonymous"
-    />
-    <!-- MDBootstrap -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css"
-      integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
-      crossorigin="anonymous"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
-      integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4="
-      crossorigin="anonymous"
-    />
-    <!-- Academicons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css"
-      integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg="
-      crossorigin="anonymous"
-    />
-    <!-- Google Fonts -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons"
-    />
-    <!-- Pygments Themes -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css"
-      media=""
-      id="highlight_theme_light"
-    />
-    <link rel="shortcut icon" href="/assets/img/profile_pic.jpg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="/assets/img/prof_pic.jpg" />
     <link rel="stylesheet" href="/assets/css/main.css" />
-    <link
-      rel="canonical"
-      href="https://stochasticritic.github.io/projects/9_project/"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/monokai.css"
-      media="none"
-      id="highlight_theme_dark"
-    />
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
+    <link rel="stylesheet" href="/assets/css/theme.css" />
   </head>
 
   <body class="fixed-top-nav">
@@ -85,137 +24,85 @@
           <a class="navbar-brand title font-weight-lighter" href="/">
             <span class="font-weight-bold">Soham</span> Kulkarni
           </a>
-
-          <button
-            class="navbar-toggler collapsed ml-auto"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar top-bar"></span>
             <span class="icon-bar middle-bar"></span>
             <span class="icon-bar bottom-bar"></span>
           </button>
-
           <div class="collapse navbar-collapse text-right" id="navbarNav">
             <ul class="navbar-nav ml-auto flex-nowrap">
-              <li class="nav-item">
-                <a class="nav-link" href="/">about</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/projects/">projects</a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="/assets/pdf/soham_cv.pdf"
-                  target="_self"
-                  rel="noopener"
-                >
-                  CV
-                </a>
-              </li>
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
-              </li>
+              <li class="nav-item"><a class="nav-link" href="/">about</a></li>
+              <li class="nav-item"><a class="nav-link" href="/projects/">projects</a></li>
+              <li class="nav-item"><a class="nav-link" href="/assets/pdf/soham_cv.pdf" target="_self" rel="noopener">CV</a></li>
             </ul>
           </div>
         </div>
       </nav>
-
       <progress id="progress" value="0">
-        <div class="progress-container">
-          <span class="progress-bar"></span>
-        </div>
+        <div class="progress-container"><span class="progress-bar"></span></div>
       </progress>
     </header>
 
     <div class="container mt-5">
       <div class="post">
         <header class="post-header">
-          <h1 class="post-title">
-            Enhancing Retrieval-Augmented Generation (RAG) Systems for the CRAG Meta KDD Competition
-          </h1>
+          <h1 class="post-title">Enhancing RAG Systems for the CRAG Meta KDD Cup</h1>
           <p class="post-description">
-            Course project for CS 245: Big Data Analytics
+            CS245: Big Data Analytics &mdash; UCLA
           </p>
         </header>
 
         <article>
           <p>
-            <strong>Optimized RAG Pipeline:</strong> Developed an enhanced
-            Retrieval-Augmented Generation (RAG) system for the CRAG Meta KDD
-            competition, focusing on retrieval precision, prompt tuning, and
-            reducing hallucinations.
-          </p>
-          <p>
-            <strong>Advanced Retrieval &amp; Reranking:</strong> Used recursive
-            chunking, dense retrieval (<em>multi-qa-distilbert-cos-v1</em>), and
-            reranking (<em>BAAI/bge-reranker-v2-m3</em>) for better document
-            selection.
-          </p>
-          <p>
-            <strong>Time-Aware Query Processing:</strong> Classified queries as
-            static, slow-changing, fast-changing, and real-time, enabling
-            contextualized retrieval for different domains.
-          </p>
-          <p>
-            <strong>Improved Generative Model:</strong> Integrated GPT-4o-mini
-            with Chain-of-Thought prompting, improving accuracy and contextual
-            alignment while mitigating errors.
+            Developed an enhanced <strong>Retrieval-Augmented Generation (RAG)</strong> system for the Comprehensive RAG (CRAG) benchmark, part of the 2024 KDD Meta Cup. The system addresses persistent RAG challenges&mdash;hallucination, limited recall, and context fragmentation&mdash;through a five-stage pipeline with progressive improvements in retrieval, reranking, and generation.
           </p>
 
-          <h4>Key Results</h4>
+          <h4>Pipeline Architecture</h4>
+          <p>The system processes queries through five sequential stages:</p>
+          <ol>
+            <li><strong>Query Classification:</strong> Categorizes queries by temporal dynamics (static, slow-changing, fast-changing, real-time) to inform downstream retrieval strategy. Real-time queries prioritize recent references; static queries target stable knowledge.</li>
+            <li><strong>Recursive Chunking:</strong> Replaces line-by-line chunking with <code>RecursiveTextSplitter</code> (1000-char chunks, 200-char overlap), preserving semantic coherence across chunk boundaries.</li>
+            <li><strong>Dense Retrieval:</strong> Uses <em>multi-qa-distilbert-cos-v1</em> (trained on 215M QA pairs) for semantic matching. Time-aware filtering restricts retrieved pages based on query time and page modification timestamps for dynamic queries.</li>
+            <li><strong>Reranking:</strong> <em>BAAI/bge-reranker-v2-m3</em> evaluates query-document relevance with fine-grained scores, critical for ambiguous and multi-hop queries.</li>
+            <li><strong>Generation:</strong> GPT-4o-mini (128K token context) with Chain-of-Thought prompting for structured reasoning, explicit false-premise detection, and time-aware answer generation.</li>
+          </ol>
+
+          <h4>Chain-of-Thought Prompting Strategy</h4>
+          <p>
+            The CoT prompt instructs the model to: classify the question type (8 categories), evaluate reference recency for fast-changing queries, apply multi-step reasoning, respond "I don't know" when references are insufficient, and flag "Invalid question" for false premises.
+          </p>
+
+          <h4>Results</h4>
+          <p>
+            Progressive component additions showed consistent improvements. The final model (<code>modified_rag_classification_gpt4o</code>) achieved the best overall performance:
+          </p>
+          <table>
+            <tr><th>Model Variant</th><th>Score</th><th>Exact Acc.</th><th>Accuracy</th><th>Hallucination</th><th>Missing</th></tr>
+            <tr><td>RAG Baseline (Llama3)</td><td>&minus;0.139</td><td>3.22%</td><td>18.73%</td><td>32.58%</td><td>48.69%</td></tr>
+            <tr><td>RAG Baseline (GPT-4o)</td><td>0.060</td><td>5.62%</td><td>25.69%</td><td>19.70%</td><td>54.61%</td></tr>
+            <tr><td>+ Chunking + Reranking</td><td>0.057</td><td>7.12%</td><td>32.36%</td><td>26.67%</td><td>40.97%</td></tr>
+            <tr><td>+ CoT + Time-Aware (Final)</td><td><strong>0.079</strong></td><td><strong>15.36%</strong></td><td><strong>35.96%</strong></td><td>28.01%</td><td><strong>36.03%</strong></td></tr>
+          </table>
+
+          <h4>Key Findings</h4>
           <ul>
-            <li>
-              <strong>Retrieval Efficiency:</strong> Recursive chunking +
-              reranking improved accuracy by ~7%, but increased hallucinations
-              slightly.
-            </li>
-            <li>
-              <strong>Domain-Specific Performance:</strong> Best accuracy in
-              Open-ended (42.16%) but higher hallucinations in Finance (21.47%)
-              and Sports (24.90%).
-            </li>
-            <li>
-              <strong>Query Type Performance:</strong> Static queries (29.59%)
-              outperformed fast-changing (13.56%) and real-time (9.17%) due to
-              retrieval challenges.
-            </li>
-            <li>
-              <strong>Model Limitations:</strong> Numerical approximation
-              errors, false premise detection issues, and multi-step reasoning
-              gaps remain key challenges.
-            </li>
+            <li><strong>LLM selection</strong> produced the largest single improvement: switching from Llama-3.2-3B to GPT-4o-mini dramatically boosted score and reduced hallucination.</li>
+            <li><strong>False premise handling</strong> improved from 0% to 28.76% exact accuracy through explicit CoT instructions&mdash;a major breakthrough.</li>
+            <li><strong>Domain challenges:</strong> Finance remained the hardest domain due to dynamic numerical data. Open-domain queries performed best (42.16% accuracy).</li>
+            <li><strong>Temporal dynamics:</strong> Static queries (29.59% accuracy) significantly outperformed fast-changing (13.56%) and real-time (9.17%) queries, highlighting retrieval freshness as a bottleneck.</li>
+            <li><strong>Trade-off:</strong> The final model achieves highest accuracy but not lowest hallucination&mdash;improved retrieval sometimes surfaces partially relevant documents that increase hallucination risk.</li>
           </ul>
 
           <p>
-            Follow
-            <a
-              href="https://github.com/HARRY1708/CRAG_Meta_KDD_cup"
-              rel="external nofollow noopener"
-              target="_blank"
-              >"this repository"</a
-            >
-            for more details.
+            Code available at
+            <a href="https://github.com/HARRY1708/CRAG_Meta_KDD_cup" rel="external nofollow noopener" target="_blank">github.com/HARRY1708/CRAG_Meta_KDD_cup</a>.
           </p>
 
-          <!-- One image placeholder with caption -->
-          <div class="row">
+          <div class="row mt-3">
             <div class="col-md-12 mb-3">
-              <img
-                src="/assets/img/245_1.png"
-                class="img-fluid rounded"
-                alt="RAG Diagram"
-              />
-              <p class="mt-1"><em>Comparison of Improvements RAG with Vanilla baseline and RAG baseline on LLama3</em></p>
+              <img src="/assets/img/245_1.png" class="img-fluid rounded" alt="RAG model comparison" />
+              <p class="mt-1"><em>Comparison of progressive RAG improvements against vanilla and Llama3 baselines across all evaluation metrics</em></p>
             </div>
           </div>
         </article>
@@ -224,130 +111,37 @@
 
     <footer class="fixed-bottom">
       <div class="container mt-0">
-        © Copyright 2023 Soham Kulkarni.
-        Powered by
-        <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener"
-          >Jekyll</a
-        >
-        with
-        <a
-          href="https://github.com/alshedivat/al-folio"
-          rel="external nofollow noopener"
-          target="_blank"
-          >al-folio</a
-        >
-        theme. Hosted by
-        <a
-          href="https://pages.github.com/"
-          target="_blank"
-          rel="external nofollow noopener"
-          >GitHub Pages</a
-        >.
+        &copy; 2025 Soham Kulkarni. Hosted by
+        <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
       </div>
     </footer>
 
-    <!-- Scripts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js"
-      integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
-      integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI="
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"
-      defer
-    ></script>
-    <script src="/assets/js/masonry.js" type="text/javascript" defer></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"
-      integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM="
-      crossorigin="anonymous"
-      defer
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iU3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous" defer></script>
     <script src="/assets/js/zoom.js" defer></script>
-    <script src="/assets/js/common.js" defer></script>
+    <script type="text/javascript">window.MathJax = { tex: { tags: "ams" } };</script>
+    <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" defer></script>
 
-    <!-- MathJax -->
     <script type="text/javascript">
-      window.MathJax = { tex: { tags: "ams" } };
-    </script>
-    <script
-      type="text/javascript"
-      id="MathJax-script"
-      src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"
-      defer
-    ></script>
-    <!-- Polyfill -->
-    <script
-      src="https://polyfill.io/v3/polyfill.min.js?features=es6"
-      defer
-    ></script>
-
-    <!-- Progress Bar Setup -->
-    <script type="text/javascript">
+      const progressBar = $("#progress");
       function progressBarSetup() {
         if ("max" in document.createElement("progress")) {
-          initializeProgressElement();
-          $(document).on("scroll", function () {
-            progressBar.attr({ value: getCurrentScrollPosition() });
+          let e = $("#navbar").outerHeight(true);
+          $("body").css({"padding-top": e});
+          progressBar.css({top: e});
+          progressBar.attr({max: $(document).height() - $(window).height(), value: $(window).scrollTop()});
+          $(document).on("scroll", function() { progressBar.attr({value: $(window).scrollTop()}); });
+          $(window).on("resize", function() {
+            let e = $("#navbar").outerHeight(true);
+            $("body").css({"padding-top": e});
+            progressBar.css({top: e});
+            progressBar.attr({max: $(document).height() - $(window).height()});
           });
-          $(window).on("resize", initializeProgressElement);
-        } else {
-          resizeProgressBar();
-          $(document).on("scroll", resizeProgressBar);
-          $(window).on("resize", resizeProgressBar);
         }
       }
-
-      function getCurrentScrollPosition() {
-        return $(window).scrollTop();
-      }
-
-      function initializeProgressElement() {
-        let e = $("#navbar").outerHeight(true);
-        $("body").css({ "padding-top": e });
-        $("progress-container").css({ "padding-top": e });
-        progressBar.css({ top: e });
-        progressBar.attr({
-          max: getDistanceToScroll(),
-          value: getCurrentScrollPosition(),
-        });
-      }
-
-      function getDistanceToScroll() {
-        return $(document).height() - $(window).height();
-      }
-
-      function resizeProgressBar() {
-        progressBar.css({ width: getWidthPercentage() + "%" });
-      }
-
-      function getWidthPercentage() {
-        return (
-          (getCurrentScrollPosition() / getDistanceToScroll()) * 100
-        );
-      }
-
-      const progressBar = $("#progress");
-      window.onload = function () {
-        setTimeout(progressBarSetup, 50);
-      };
+      window.onload = function() { setTimeout(progressBarSetup, 50); };
     </script>
   </body>
 </html>
