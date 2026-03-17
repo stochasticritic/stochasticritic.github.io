@@ -3,181 +3,138 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>EKF &amp; Non-linear Least-squares SLAM | Soham Kulkarni</title>
-
+    <title>EKF &amp; Non-linear Least-Squares SLAM | Soham Kulkarni</title>
     <meta name="author" content="Soham Kulkarni" />
-    <meta
-      name="description"
-      content="For IEEE RAS Winter School for SLAM in Deformable Environments"
-    />
-    <meta
-      name="keywords"
-      content="jekyll, jekyll-theme, academic-website, portfolio-website"
-    />
+    <meta name="description" content="EKF-SLAM and optimization-based SLAM on the Victoria Park Dataset." />
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY="
-      crossorigin="anonymous"
-    />
-    <!-- MDBootstrap -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css"
-      integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
-      crossorigin="anonymous"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
-      integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4="
-      crossorigin="anonymous"
-    />
-    <!-- Academicons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css"
-      integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg="
-      crossorigin="anonymous"
-    />
-    <!-- Google Fonts -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons"
-    />
-    <!-- Pygments Themes -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css"
-      media=""
-      id="highlight_theme_light"
-    />
-    <link rel="shortcut icon" href="/assets/img/profile_pic.jpg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="/assets/img/prof_pic.jpg" />
     <link rel="stylesheet" href="/assets/css/main.css" />
     <link rel="stylesheet" href="/assets/css/theme.css" />
-    <link
-      rel="canonical"
-      href="https://stochasticritic.github.io/projects/2_project/"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/monokai.css"
-      media="none"
-      id="highlight_theme_dark"
-    />
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
   </head>
 
   <body class="fixed-top-nav">
     <header>
       <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
         <div class="container">
-          <!-- "Soham Kulkarni" brand => link to about -->
           <a class="navbar-brand title font-weight-lighter" href="/">
             <span class="font-weight-bold">Soham</span> Kulkarni
           </a>
-
-          <button
-            class="navbar-toggler collapsed ml-auto"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar top-bar"></span>
             <span class="icon-bar middle-bar"></span>
             <span class="icon-bar bottom-bar"></span>
           </button>
-
           <div class="collapse navbar-collapse text-right" id="navbarNav">
             <ul class="navbar-nav ml-auto flex-nowrap">
-              <li class="nav-item">
-                <a class="nav-link" href="/">about</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/projects/">projects</a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="/assets/pdf/soham_cv.pdf"
-                  target="_self"
-                  rel="noopener"
-                >
-                  CV
-                </a>
-              </li>
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
-              </li>
+              <li class="nav-item"><a class="nav-link" href="/">about</a></li>
+              <li class="nav-item"><a class="nav-link" href="/projects/">projects</a></li>
+              <li class="nav-item"><a class="nav-link" href="/assets/pdf/soham_cv.pdf" target="_self" rel="noopener">CV</a></li>
             </ul>
           </div>
         </div>
       </nav>
-
       <progress id="progress" value="0">
-        <div class="progress-container">
-          <span class="progress-bar"></span>
-        </div>
+        <div class="progress-container"><span class="progress-bar"></span></div>
       </progress>
     </header>
 
     <div class="container mt-5">
       <div class="post">
         <header class="post-header">
-          <h1 class="post-title">
-            EKF and Non-linear Least-squares Optimization Based SLAM
-          </h1>
-          <p class="post-description">
-            For IEEE RAS Winter School for SLAM in Deformable Environments
-          </p>
+          <h1 class="post-title">EKF and Non-linear Least-Squares Optimization Based SLAM</h1>
+          <p class="post-description">For IEEE RAS Winter School for SLAM in Deformable Environments</p>
         </header>
 
         <article>
           <p>
-            Implemented EKF-based SLAM and Optimization-based SLAM (Non-linear
-            Least Squares) on the Victoria Park Dataset.
+            Implemented and compared two classical SLAM approaches on the <strong>Victoria Park Dataset</strong>: filter-based EKF-SLAM and optimization-based non-linear least-squares SLAM (Graph SLAM).
           </p>
 
-          <!-- Three image placeholders, no bullet lines for inputs -->
-          <div class="row">
+          <h4>EKF-SLAM</h4>
+          <p>
+            The Extended Kalman Filter maintains a joint state vector of the robot pose and all landmark positions, updated incrementally as new observations arrive.
+          </p>
+
+          <h3>State Vector</h3>
+          <p>The augmented state vector concatenates the robot pose \(\mathbf{x}_r = [x, y, \theta]^\top\) with \(N\) landmark positions:</p>
+          <div class="equation">
+            \[
+            \mathbf{x} = \begin{bmatrix} \mathbf{x}_r \\ \mathbf{m}_1 \\ \vdots \\ \mathbf{m}_N \end{bmatrix} \in \mathbb{R}^{3 + 2N}
+            \]
+          </div>
+
+          <h3>Prediction Step</h3>
+          <p>Given control input \(\mathbf{u}_t = [v_t, \omega_t]^\top\) (velocity and angular velocity), the motion model is:</p>
+          <div class="equation">
+            \[
+            \mathbf{x}_{t+1} = f(\mathbf{x}_t, \mathbf{u}_t) = \begin{bmatrix} x_t + v_t \Delta t \cos(\theta_t) \\ y_t + v_t \Delta t \sin(\theta_t) \\ \theta_t + \omega_t \Delta t \end{bmatrix}
+            \]
+          </div>
+          <p>The covariance prediction uses the Jacobian \(\mathbf{F}_t\) of the motion model:</p>
+          <div class="equation">
+            \[
+            \mathbf{P}_{t+1|t} = \mathbf{F}_t \, \mathbf{P}_{t|t} \, \mathbf{F}_t^\top + \mathbf{Q}_t
+            \]
+          </div>
+          <p>where \(\mathbf{Q}_t\) is the process noise covariance.</p>
+
+          <h3>Update Step</h3>
+          <p>For a range-bearing observation \(\mathbf{z} = [r, \phi]^\top\) of landmark \(j\):</p>
+          <div class="equation">
+            \[
+            \mathbf{K}_t = \mathbf{P}_{t|t-1} \, \mathbf{H}_t^\top \left(\mathbf{H}_t \, \mathbf{P}_{t|t-1} \, \mathbf{H}_t^\top + \mathbf{R}_t\right)^{-1}
+            \]
+          </div>
+          <div class="equation">
+            \[
+            \mathbf{x}_{t|t} = \mathbf{x}_{t|t-1} + \mathbf{K}_t \left(\mathbf{z}_t - h(\mathbf{x}_{t|t-1})\right)
+            \]
+          </div>
+          <p>where \(\mathbf{H}_t\) is the observation Jacobian, \(\mathbf{R}_t\) is the measurement noise, and \(\mathbf{K}_t\) is the Kalman gain.</p>
+
+          <h4>Graph SLAM (Non-linear Least Squares)</h4>
+          <p>
+            The optimization-based approach constructs a <strong>factor graph</strong> where nodes represent robot poses and landmark positions, and edges encode odometry and observation constraints. The objective minimizes the sum of squared Mahalanobis distances:
+          </p>
+          <div class="equation">
+            \[
+            \mathbf{x}^* = \arg\min_{\mathbf{x}} \sum_{(i,j) \in \mathcal{C}} \left\| h_{ij}(\mathbf{x}_i, \mathbf{x}_j) - \mathbf{z}_{ij} \right\|^2_{\boldsymbol{\Omega}_{ij}}
+            \]
+          </div>
+          <p>
+            where the weighted norm is \(\|\mathbf{e}\|^2_{\boldsymbol{\Omega}} = \mathbf{e}^\top \boldsymbol{\Omega} \, \mathbf{e}\) with information matrix \(\boldsymbol{\Omega}_{ij}\). This is solved iteratively using the <strong>Gauss-Newton</strong> algorithm, which linearizes the constraints at each step:
+          </p>
+          <div class="equation">
+            \[
+            \mathbf{H}^\top \boldsymbol{\Omega} \, \mathbf{H} \, \Delta \mathbf{x} = -\mathbf{H}^\top \boldsymbol{\Omega} \, \mathbf{e}
+            \]
+          </div>
+
+          <h4>Comparison</h4>
+          <table>
+            <tr><th>Aspect</th><th>EKF-SLAM</th><th>Graph SLAM</th></tr>
+            <tr><td>Complexity per step</td><td>\(\mathcal{O}(N^2)\)</td><td>\(\mathcal{O}(N)\) amortized</td></tr>
+            <tr><td>Memory</td><td>Dense covariance \(\mathcal{O}(N^2)\)</td><td>Sparse factors \(\mathcal{O}(N)\)</td></tr>
+            <tr><td>Consistency</td><td>Approximation errors accumulate</td><td>Global optimization, more consistent</td></tr>
+            <tr><td>Loop closure</td><td>Difficult to incorporate</td><td>Natural via graph edges</td></tr>
+            <tr><td>Linearization</td><td>Single linearization point</td><td>Re-linearization at each iteration</td></tr>
+          </table>
+
+          <div class="row mt-4">
             <div class="col-md-4 mb-3">
-              <img
-                src="/assets/img/slam_image_placeholder1.png"
-                class="img-fluid rounded"
-                alt="Placeholder 1"
-              />
+              <img src="/assets/img/slam_image_placeholder1.png" class="img-fluid rounded" alt="EKF-SLAM result" />
             </div>
             <div class="col-md-4 mb-3">
-              <img
-                src="/assets/img/slam_image_placeholder2.png"
-                class="img-fluid rounded"
-                alt="Placeholder 2"
-              />
+              <img src="/assets/img/slam_image_placeholder2.png" class="img-fluid rounded" alt="Graph SLAM result" />
             </div>
             <div class="col-md-4 mb-3">
-              <img
-                src="/assets/img/slam_image_placeholder3.png"
-                class="img-fluid rounded"
-                alt="Placeholder 3"
-              />
+              <img src="/assets/img/slam_image_placeholder3.png" class="img-fluid rounded" alt="SLAM comparison" />
             </div>
           </div>
         </article>
@@ -186,131 +143,37 @@
 
     <footer class="fixed-bottom">
       <div class="container mt-0">
-        © Copyright 2023 Soham Kulkarni.
-        Powered by
-        <a
-          href="https://jekyllrb.com/"
-          target="_blank"
-          rel="external nofollow noopener"
-          >Jekyll</a
-        >
-        with
-        <a
-          href="https://github.com/alshedivat/al-folio"
-          rel="external nofollow noopener"
-          target="_blank"
-          >al-folio</a
-        >
-        theme. Hosted by
-        <a
-          href="https://pages.github.com/"
-          target="_blank"
-          rel="external nofollow noopener"
-          >GitHub Pages</a
-        >.
+        &copy; 2025 Soham Kulkarni. Hosted by
+        <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
       </div>
     </footer>
 
-    <!-- Scripts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js"
-      integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
-      integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI="
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"
-      defer
-    ></script>
-    <script src="/assets/js/masonry.js" type="text/javascript" defer></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"
-      integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM="
-      crossorigin="anonymous"
-      defer
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous" defer></script>
     <script src="/assets/js/zoom.js" defer></script>
-    <script src="/assets/js/common.js" defer></script>
+    <script type="text/javascript">window.MathJax = { tex: { tags: "ams" } };</script>
+    <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" defer></script>
 
-    <!-- MathJax -->
     <script type="text/javascript">
-      window.MathJax = { tex: { tags: "ams" } };
-    </script>
-    <script
-      type="text/javascript"
-      id="MathJax-script"
-      src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"
-      defer
-    ></script>
-    <!-- Polyfill -->
-    <script
-      src="https://polyfill.io/v3/polyfill.min.js?features=es6"
-      defer
-    ></script>
-
-    <!-- Progress Bar Setup -->
-    <script type="text/javascript">
+      const progressBar = $("#progress");
       function progressBarSetup() {
         if ("max" in document.createElement("progress")) {
-          initializeProgressElement();
-          $(document).on("scroll", function() {
-            progressBar.attr({ value: getCurrentScrollPosition() });
+          let e = $("#navbar").outerHeight(true);
+          $("body").css({"padding-top": e});
+          progressBar.css({top: e});
+          progressBar.attr({max: $(document).height() - $(window).height(), value: $(window).scrollTop()});
+          $(document).on("scroll", function() { progressBar.attr({value: $(window).scrollTop()}); });
+          $(window).on("resize", function() {
+            let e = $("#navbar").outerHeight(true);
+            $("body").css({"padding-top": e});
+            progressBar.css({top: e});
+            progressBar.attr({max: $(document).height() - $(window).height()});
           });
-          $(window).on("resize", initializeProgressElement);
-        } else {
-          resizeProgressBar();
-          $(document).on("scroll", resizeProgressBar);
-          $(window).on("resize", resizeProgressBar);
         }
       }
-
-      function getCurrentScrollPosition() {
-        return $(window).scrollTop();
-      }
-
-      function initializeProgressElement() {
-        let e = $("#navbar").outerHeight(true);
-        $("body").css({ "padding-top": e });
-        $("progress-container").css({ "padding-top": e });
-        progressBar.css({ top: e });
-        progressBar.attr({
-          max: getDistanceToScroll(),
-          value: getCurrentScrollPosition()
-        });
-      }
-
-      function getDistanceToScroll() {
-        return $(document).height() - $(window).height();
-      }
-
-      function resizeProgressBar() {
-        progressBar.css({ width: getWidthPercentage() + "%" });
-      }
-
-      function getWidthPercentage() {
-        return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
-      }
-
-      const progressBar = $("#progress");
-      window.onload = function() {
-        setTimeout(progressBarSetup, 50);
-      };
+      window.onload = function() { setTimeout(progressBarSetup, 50); };
     </script>
   </body>
 </html>

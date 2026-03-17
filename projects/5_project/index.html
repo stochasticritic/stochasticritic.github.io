@@ -1,30 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>A Data-Acquisition Robot for Acoustic Sensing & Localization (Robot Audition) | Soham Kulkarni</title>
-    <meta name="author" content="Soham Kulkarni">
-    <meta name="description" content="Developed a robot audition platform">
-    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Data-Acquisition Robot for Acoustic Sensing | Soham Kulkarni</title>
+    <meta name="author" content="Soham Kulkarni" />
+    <meta name="description" content="Robot audition platform for sound source localization using an 8-channel microphone array." />
 
-    <!-- Stylesheets -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
-    <link rel="shortcut icon" href="/assets/img/profile_pic.jpg">
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/theme.css">
-    <link rel="canonical" href="https://stochasticritic.github.io/projects/5_project/">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/monokai.css" media="none" id="highlight_theme_dark">
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="/assets/img/prof_pic.jpg" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
   </head>
 
   <body class="fixed-top-nav">
@@ -34,7 +24,7 @@
           <a class="navbar-brand title font-weight-lighter" href="/">
             <span class="font-weight-bold">Soham</span> Kulkarni
           </a>
-          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar top-bar"></span>
             <span class="icon-bar middle-bar"></span>
@@ -44,74 +34,122 @@
             <ul class="navbar-nav ml-auto flex-nowrap">
               <li class="nav-item"><a class="nav-link" href="/">about</a></li>
               <li class="nav-item"><a class="nav-link" href="/projects/">projects</a></li>
-              <li class="nav-item"><a class="nav-link" href="/cv/">CV</a></li>
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
-              </li>
+              <li class="nav-item"><a class="nav-link" href="/assets/pdf/soham_cv.pdf" target="_self" rel="noopener">CV</a></li>
             </ul>
           </div>
         </div>
       </nav>
       <progress id="progress" value="0">
-        <div class="progress-container">
-          <span class="progress-bar"></span>
-        </div>
+        <div class="progress-container"><span class="progress-bar"></span></div>
       </progress>
     </header>
 
     <div class="container mt-5">
       <div class="post">
         <header class="post-header">
-          <h1 class="post-title">A Data-Acquisition Robot for Acoustic Sensing & Localization (Robot Audition)</h1>
-          <p class="post-description">Developed a robot audition platform</p>
+          <h1 class="post-title">A Data-Acquisition Robot for Acoustic Sensing &amp; Localization (Robot Audition)</h1>
+          <p class="post-description">Robot audition platform for DRDO, Govt. of India</p>
         </header>
 
         <article>
-          <p>Work done with 
-            <a href="https://people.iith.ac.in/sumohana/" rel="external nofollow noopener" target="_blank">Dr. Sumohana Chhannappayya</a> (IIT Hyderabad) and 
-            <a href="https://sites.google.com/iith.ac.in/ksrm/home?authuser=0" rel="external nofollow noopener" target="_blank">Dr. K Sri Rama Murty</a> (IIT Hyderabad)
+          <p>Work done with
+            <a href="https://people.iith.ac.in/sumohana/" rel="external nofollow noopener" target="_blank">Dr. Sumohana Chhannappayya</a> and
+            <a href="https://sites.google.com/iith.ac.in/ksrm/home" rel="external nofollow noopener" target="_blank">Dr. K Sri Rama Murty</a> (IIT Hyderabad)
           </p>
-
           <p>(July 2021 - May 2022)</p>
 
+          <h4>Overview</h4>
+          <p>
+            Developed a complete robot audition platform for robust and precise sound source localization and tracking in outdoor environments. The system integrates an <strong>8-channel microphone array</strong> mounted on a custom-built all-terrain robot with a height-adjustable mast (up to 1.7 m).
+          </p>
+
+          <h4>Sound Source Localization</h4>
+          <p>
+            The localization pipeline uses the <strong>Generalized Cross-Correlation with Phase Transform (GCC-PHAT)</strong> algorithm for time-difference-of-arrival (TDOA) estimation between microphone pairs. For microphones \(i\) and \(j\), the GCC-PHAT function is:
+          </p>
+          <div class="equation">
+            \[
+            R_{ij}(\tau) = \int_{-\infty}^{\infty} \frac{X_i(f) \, X_j^*(f)}{|X_i(f) \, X_j^*(f)|} \, e^{j 2\pi f \tau} \, df
+            \]
+          </div>
+          <p>
+            where \(X_i(f)\) and \(X_j(f)\) are the Fourier transforms of the signals at microphones \(i\) and \(j\), and \(\tau\) is the time delay. The phase transform normalization makes GCC-PHAT robust to reverberation and noise in outdoor environments.
+          </p>
+          <p>
+            The TDOA estimates from multiple microphone pairs are combined using <strong>Steered Response Power (SRP)</strong> to estimate the direction-of-arrival (DOA) of the sound source, scanning over a grid of candidate angles:
+          </p>
+          <div class="equation">
+            \[
+            P(\theta, \phi) = \sum_{i < j} R_{ij}\!\left(\tau_{ij}(\theta, \phi)\right)
+            \]
+          </div>
+          <p>
+            where \(\tau_{ij}(\theta, \phi)\) is the expected delay for direction \((\theta, \phi)\) based on the array geometry.
+          </p>
+
+          <h4>Microphone Array Specifications</h4>
+          <table>
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td>Channels</td><td>8</td></tr>
+            <tr><td>Array geometry</td><td>Uniform circular array (UCA)</td></tr>
+            <tr><td>Array diameter</td><td>0.2 m</td></tr>
+            <tr><td>Sampling rate</td><td>44.1 kHz</td></tr>
+            <tr><td>Mast height range</td><td>0.5 - 1.7 m (adjustable)</td></tr>
+          </table>
+
+          <h4>Robot Platform</h4>
           <ul>
-            <li>Implemented robust and precise sound source localization and tracking using an 8-channel microphone array on an all-terrain robot developed by myself. (The height of the microphone array is adjustable up to 1.7m).</li>
-            <li>Developed a communication system using the 4G protocol, with an onboard HDD for live data storage streaming from state estimation and other sensors.</li>
+            <li>Custom-built all-terrain mobile robot with differential drive</li>
+            <li>Onboard HDD for live data storage from state estimation and sensor streams</li>
+            <li><strong>4G LTE communication</strong> for remote data streaming and robot control</li>
+            <li>Integrated IMU, GPS, and wheel encoders for state estimation</li>
+            <li>ROS-based software architecture for sensor integration and real-time processing</li>
           </ul>
 
-          <div class="row justify-content-center">
+          <div class="row justify-content-center mt-3">
             <div class="col-sm mt-3 mt-md-0">
               <figure>
-                <picture>
-                  <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/data_acquisition-480.webp">
-                  <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/data_acquisition-800.webp">
-                  <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/data_acquisition-1400.webp">
-                  <img src="/assets/img/data_acquisition.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="Example Image" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-                </picture>
+                <img src="/assets/img/data_acquisition.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Data acquisition robot" />
               </figure>
             </div>
           </div>
-
-          <div class="caption"></div>
         </article>
       </div>
     </div>
 
     <footer class="fixed-bottom">
       <div class="container mt-0">
-        © Copyright 2023 Soham Kulkarni.
-        Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a>
-        with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme.
-        Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+        &copy; 2025 Soham Kulkarni. Hosted by
+        <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
-    <script defer src="/assets/js/common.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous" defer></script>
+    <script src="/assets/js/zoom.js" defer></script>
+    <script type="text/javascript">window.MathJax = { tex: { tags: "ams" } };</script>
+    <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" defer></script>
+
+    <script type="text/javascript">
+      const progressBar = $("#progress");
+      function progressBarSetup() {
+        if ("max" in document.createElement("progress")) {
+          let e = $("#navbar").outerHeight(true);
+          $("body").css({"padding-top": e});
+          progressBar.css({top: e});
+          progressBar.attr({max: $(document).height() - $(window).height(), value: $(window).scrollTop()});
+          $(document).on("scroll", function() { progressBar.attr({value: $(window).scrollTop()}); });
+          $(window).on("resize", function() {
+            let e = $("#navbar").outerHeight(true);
+            $("body").css({"padding-top": e});
+            progressBar.css({top: e});
+            progressBar.attr({max: $(document).height() - $(window).height()});
+          });
+        }
+      }
+      window.onload = function() { setTimeout(progressBarSetup, 50); };
+    </script>
   </body>
 </html>

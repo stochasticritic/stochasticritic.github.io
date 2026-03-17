@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>RINSE: Smoothness-Driven Data Quality | Soham Kulkarni</title>
+    <title>Benchmarking Data Quality in Imitation Learning | Soham Kulkarni</title>
     <meta name="author" content="Soham Kulkarni" />
-    <meta name="description" content="Smoothness-driven data quality metrics for imitation learning — IROS 2026 submission." />
+    <meta name="description" content="Smoothness-driven data quality metrics for imitation learning." />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
@@ -47,20 +47,27 @@
     <div class="container mt-5">
       <div class="post">
         <header class="post-header">
-          <h1 class="post-title">RINSE: Smoothness-Driven Data Quality for Imitation Learning</h1>
+          <h1 class="post-title">Benchmarking Data Quality in Imitation Learning</h1>
           <p class="post-description">
-            Submitted to IROS 2026 &mdash; UCLA Robot Intelligence Lab
+            ICML DataWorld 2025 Workshop (presented), UCLA Robot Intelligence Lab
           </p>
         </header>
 
         <article>
           <p>
-            RINSE is a framework for evaluating and filtering demonstration quality in imitation learning based on <strong>trajectory smoothness</strong>. Grounded in motor control theory&mdash;where smoothness is a hallmark of skilled execution&mdash;the framework introduces two complementary metrics that operate without policy training, rollouts, or dataset-global statistics.
+            RINSE is a framework for evaluating and filtering demonstration quality in imitation learning using two complementary smoothness-based metrics: <strong>Spectral Arc Length (SAL)</strong> and <strong>Trajectory-Envelope Distance (TED)</strong>. These metrics operate without policy training, rollouts, or dataset-global statistics, enabling efficient data curation before any learning begins.
           </p>
+
+          <div class="row mt-3 mb-4">
+            <div class="col-md-12">
+              <img src="/assets/img/dq_method_visual.png" class="img-fluid rounded" alt="RINSE method overview" />
+              <p class="mt-1"><em>Method overview: SAL operates in the frequency domain on speed profiles, while TED measures geometric deviation from a smooth B&eacute;zier envelope with contact-aware partitioning.</em></p>
+            </div>
+          </div>
 
           <h4>Motivation</h4>
           <p>
-            Behavioral cloning (BC) is fundamentally limited by demonstration quality. Real-world datasets contain trajectories of varying quality due to operator skill differences, teleoperation artifacts, and procedural inconsistencies. Standard BC treats all demonstrations equally, but the policy loss decomposes as:
+            Behavioral cloning (BC) is fundamentally limited by demonstration quality. The BC policy loss decomposes as:
           </p>
           <div class="equation">
             \[
@@ -68,53 +75,85 @@
             \]
           </div>
           <p>
-            The second term is a <strong>noise floor</strong> \(\bar{\sigma}^2\) that cannot be reduced by training&mdash;only by curating the data. With the BC regret bound \(J(\hat{\pi}) - J(\pi^*) \leq H^2 \varepsilon\), even modest reductions in per-step error amplify into substantial rollout improvements through the \(H^2\) compounding factor.
+            The second term is a <strong>noise floor</strong> \(\bar{\sigma}^2\) that cannot be reduced by training. With the BC regret bound \(J(\hat{\pi}) - J(\pi^*) \leq H^2 \varepsilon\), even modest reductions in per-step error amplify into substantial rollout improvements through the \(H^2\) compounding factor. RINSE targets this noise floor by identifying and removing low-quality demonstrations.
           </p>
 
-          <h4>Metrics</h4>
-          <h3>Spectral Arc Length (SAL)</h3>
+          <h4>Quality Diagnostic: Data Collection Modality</h4>
           <p>
-            Adapted from rehabilitation science, SAL quantifies smoothness in the frequency domain. Given a speed signal \(v[0{:}T{-}1]\), the one-sided FFT yields normalized magnitudes \(\hat{V}_k\), and the arc length of this spectral curve gives:
+            Applied to the RTIS benchmark (5 manipulation tasks, 3 collection modalities), both SAL and TED consistently rank <strong>kinesthetic &gt; VR &gt; spacemouse</strong>, matching the downstream policy success ordering. Rate-controlled spacemouse introduces up to 4&times; larger TED scores compared to kinesthetic teaching.
           </p>
-          <div class="equation">
-            \[
-            \mathrm{SAL}(v) := -\sum_{k=1}^{T/2} \sqrt{\left(f_k - f_{k-1}\right)^2 + \left(\hat{V}_k - \hat{V}_{k-1}\right)^2}
-            \]
+          <div class="row mt-3 mb-3">
+            <div class="col-md-12">
+              <img src="/assets/img/dq_rtis_visual.png" class="img-fluid rounded" alt="RTIS modality comparison" />
+              <p class="mt-1"><em>SAL (higher = smoother) and TED (lower = smoother) for the Open Drawer task. Scores correlate with policy success across collection modalities.</em></p>
+            </div>
           </div>
-          <p>
-            Less-negative SAL (closer to zero) indicates smoother motion. The metric is scale-invariant, computable in \(\mathcal{O}(T \log T)\), and has demonstrated ICC &gt; 0.9 in rehabilitation benchmarks.
-          </p>
 
-          <h3>Trajectory-Envelope Distance (TED)</h3>
+          <h4>Filtering: RoboMimic Benchmarks</h4>
           <p>
-            TED captures <strong>phase-aware geometric coherence</strong>. Each trajectory is partitioned by gripper contact into dense boundary regions and sparse interior segments. A low-control-point B&eacute;zier curve is fit via greedy refinement, and the normalized DTW distance between the raw trajectory and its smooth envelope yields the TED score:
+            Smoothness-based filtering on three RoboMimic benchmarks with Diffusion Policy (Transformer backbone). Demos are ranked by TED or SAL, and a budget of \(K\) top demonstrations is selected.
           </p>
-          <div class="equation">
-            \[
-            d_{\mathrm{TED}}(\tau) = \frac{1}{|P|}\sum_{(t,s)\in P} \sqrt{\|x_t - \tilde{x}_s\|^2 + w_{\mathrm{ori}}^2\,\theta(R_t, \tilde{R}_s)^2}
-            \]
-          </div>
-          <p>
-            Lower TED indicates higher intrinsic smoothness. The contact-aware partition avoids penalizing natural discontinuities at grasp/release transitions.
-          </p>
-
-          <h4>Results</h4>
           <table>
-            <tr><th>Benchmark</th><th>Setting</th><th>Improvement</th></tr>
-            <tr><td>RoboMimic Transport</td><td>SAL filtering: 50/300 demos</td><td><strong>+16%</strong> success rate</td></tr>
-            <tr><td>RoboMimic Tool Hang</td><td>SAL filtering: 100/200 demos</td><td><strong>+8%</strong> success rate</td></tr>
-            <tr><td>Real-world Push Block</td><td>TED filtering: 100/200 demos</td><td><strong>+20%</strong> success rate (88% vs 68%)</td></tr>
-            <tr><td>LIBERO-10</td><td>TED re-ranking within STRAP retrieval</td><td><strong>+5.6%</strong> mean success</td></tr>
-            <tr><td>Re-Mix (7 OXE domains)</td><td>Domain reweighting correlation</td><td>Spearman &rho; &ge; 0.89</td></tr>
+            <tr><th>Task</th><th>Source</th><th>|\(\mathcal{D}\)|</th><th>\(K\)</th><th>TED</th><th>SAL</th><th>Full</th></tr>
+            <tr><td>Square</td><td>mh</td><td>300</td><td>50</td><td>75%</td><td>72%</td><td><strong>76%</strong></td></tr>
+            <tr><td>Square</td><td>better</td><td>100</td><td>50</td><td><strong>82%</strong></td><td><strong>82%</strong></td><td>78%</td></tr>
+            <tr><td>Tool Hang</td><td>ph</td><td>200</td><td>100</td><td>58%</td><td><strong>71%</strong></td><td>63%</td></tr>
+            <tr><td>Transport</td><td>mh</td><td>300</td><td>50</td><td>46%</td><td><strong>55%</strong></td><td>39%</td></tr>
+            <tr><td>Transport</td><td>b-b</td><td>50</td><td>25</td><td>36%</td><td><strong>54%</strong></td><td>42%</td></tr>
           </table>
           <p style="margin-top: 1rem;">
-            On the real-world Push Block task, TED-filtered subsets at 50% data consistently outperformed random subsets by <strong>16&ndash;32 percentage points</strong>. Filtered top-50 demos on RoboMimic Square converged to 75% success in ~40k steps vs ~450k for the full 300 demos (&gt;10&times; speed-up).
+            SAL filtering achieves a <strong>+16% improvement</strong> on Transport (bimanual task with substantial free-space motion) using only 50 of 300 demos. On Tool Hang, SAL with half the demonstrations exceeds full-data performance by <strong>+8%</strong>. Filtered top-50 on Square converge to 75% success in ~40k steps vs ~450k for the full 300 demos (&gt;10&times; convergence speed-up).
           </p>
 
-          <h4>Complementarity</h4>
+          <h4>Filtering: Real-World Experiments</h4>
+          <p>
+            Evaluated on a U-Factory xArm 7-DOF robot with two RealSense cameras (wrist and side-mounted). All policies use Diffusion Policy (1D Conv UNet backbone), evaluated at epoch 50 over 25 randomized trials.
+          </p>
+          <table>
+            <tr><th>Task</th><th>|\(\mathcal{D}\)|</th><th>\(K\)</th><th>Random</th><th>TED</th><th>SAL</th><th>Full</th></tr>
+            <tr><td>Push Block</td><td>200</td><td>150</td><td>64%</td><td>80%</td><td>72%</td><td>68%</td></tr>
+            <tr><td>Push Block</td><td>200</td><td>100</td><td>59%</td><td><strong>88%</strong></td><td>84%</td><td>68%</td></tr>
+            <tr><td>Push Block</td><td>200</td><td>50</td><td>52%</td><td>84%</td><td>84%</td><td>68%</td></tr>
+            <tr><td>Pick &amp; Place</td><td>80</td><td>40</td><td>55%</td><td><strong>76%</strong></td><td>68%</td><td>76%</td></tr>
+          </table>
+          <p style="margin-top: 1rem;">
+            TED filtering achieves <strong>+20% higher success</strong> on Push Block with half the data. At every subset size, TED outperforms random subsets by <strong>16-32 percentage points</strong>, confirming that the quality ranking (not just subset size) drives improvement.
+          </p>
+
+          <h4>Filtering: Retrieval-Augmented Learning (LIBERO-10)</h4>
+          <p>
+            Integrated into the STRAP retrieval framework on LIBERO-10 (10 language-conditioned manipulation tasks). The top 400 SDTW candidates per query are re-ranked by TED or SAL, retaining the top 200.
+          </p>
+          <table>
+            <tr><th>Method</th><th>Mug-MW</th><th>Moka</th><th>Soup-S</th><th>CCB</th><th>Mug-P</th><th>Stove</th><th>Bowl-C</th><th>Soup-C</th><th>Mug2</th><th>Book-C</th><th><strong>Avg</strong></th></tr>
+            <tr><td>STRAP</td><td><strong>16</strong></td><td>0</td><td>40</td><td>16</td><td>22</td><td><strong>84</strong></td><td>76</td><td>24</td><td>48</td><td>80</td><td>40.6</td></tr>
+            <tr><td>+TED</td><td>14</td><td>0</td><td>32</td><td><strong>48</strong></td><td><strong>38</strong></td><td>72</td><td><strong>92</strong></td><td><strong>34</strong></td><td>48</td><td>84</td><td><strong>46.2</strong></td></tr>
+            <tr><td>+SAL</td><td>14</td><td>0</td><td><strong>44</strong></td><td>8</td><td>34</td><td>68</td><td>84</td><td>40</td><td><strong>58</strong></td><td><strong>100</strong></td><td>45.0</td></tr>
+          </table>
+          <p style="margin-top: 1rem;">
+            TED+STRAP and SAL+STRAP improve aggregate success by <strong>+5.6%</strong> and <strong>+4.4%</strong> respectively. TED excels on contact-sensitive tasks (Cream-Cheese-Butter: +32%), while SAL excels on tasks with free-space motion (Book-Caddy: +20%).
+          </p>
+
+          <h4>Re-Mix Domain Reweighting</h4>
+          <p>
+            RINSE scores are used as soft quality weights within the Re-Mix framework for Group-DRO-style domain reweighting across 7 Open X-Embodiment domains. RINSE-weighted allocations achieve Spearman \(\rho \geq 0.89\) and cosine similarity \(\geq 0.989\) with Re-Mix base allocations, which are validated to improve downstream policy performance. All variants concentrate weight on the <em>toto</em> domain, identified as having the highest marginal training value.
+          </p>
+
+          <h4>Metric Complementarity</h4>
           <p>
             SAL excels at detecting <strong>free-space jitter</strong> (e.g., Transport task), while TED captures <strong>spatial artifacts near contact</strong> (e.g., Square task). Together they provide comprehensive trajectory quality assessment across different task structures.
           </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6 mb-3">
+              <img src="/assets/img/dq_sal_variance_grid.png" class="img-fluid rounded" alt="SAL filtered variance grid" />
+              <p class="mt-1"><em>SAL trajectory-filtered variance reduction across tasks</em></p>
+            </div>
+            <div class="col-md-6 mb-3">
+              <img src="/assets/img/dq_ted_variance_grid.png" class="img-fluid rounded" alt="TED filtered variance grid" />
+              <p class="mt-1"><em>TED trajectory-filtered variance reduction across tasks</em></p>
+            </div>
+          </div>
 
           <div class="row mt-3">
             <div class="col-md-6 mb-3">

@@ -49,13 +49,13 @@
         <header class="post-header">
           <h1 class="post-title">Enhancing RAG Systems for the CRAG Meta KDD Cup</h1>
           <p class="post-description">
-            CS245: Big Data Analytics &mdash; UCLA
+            CS245: Big Data Analytics , UCLA
           </p>
         </header>
 
         <article>
           <p>
-            Developed an enhanced <strong>Retrieval-Augmented Generation (RAG)</strong> system for the Comprehensive RAG (CRAG) benchmark, part of the 2024 KDD Meta Cup. The system addresses persistent RAG challenges&mdash;hallucination, limited recall, and context fragmentation&mdash;through a five-stage pipeline with progressive improvements in retrieval, reranking, and generation.
+            Developed an enhanced <strong>Retrieval-Augmented Generation (RAG)</strong> system for the Comprehensive RAG (CRAG) benchmark, part of the 2024 KDD Meta Cup. The system addresses persistent RAG challenges,hallucination, limited recall, and context fragmentation,through a five-stage pipeline with progressive improvements in retrieval, reranking, and generation.
           </p>
 
           <h4>Pipeline Architecture</h4>
@@ -88,10 +88,10 @@
           <h4>Key Findings</h4>
           <ul>
             <li><strong>LLM selection</strong> produced the largest single improvement: switching from Llama-3.2-3B to GPT-4o-mini dramatically boosted score and reduced hallucination.</li>
-            <li><strong>False premise handling</strong> improved from 0% to 28.76% exact accuracy through explicit CoT instructions&mdash;a major breakthrough.</li>
+            <li><strong>False premise handling</strong> improved from 0% to 28.76% exact accuracy through explicit CoT instructions,a major breakthrough.</li>
             <li><strong>Domain challenges:</strong> Finance remained the hardest domain due to dynamic numerical data. Open-domain queries performed best (42.16% accuracy).</li>
             <li><strong>Temporal dynamics:</strong> Static queries (29.59% accuracy) significantly outperformed fast-changing (13.56%) and real-time (9.17%) queries, highlighting retrieval freshness as a bottleneck.</li>
-            <li><strong>Trade-off:</strong> The final model achieves highest accuracy but not lowest hallucination&mdash;improved retrieval sometimes surfaces partially relevant documents that increase hallucination risk.</li>
+            <li><strong>Trade-off:</strong> The final model achieves highest accuracy but not lowest hallucination,improved retrieval sometimes surfaces partially relevant documents that increase hallucination risk.</li>
           </ul>
 
           <p>

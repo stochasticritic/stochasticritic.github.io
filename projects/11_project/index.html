@@ -49,13 +49,13 @@
         <header class="post-header">
           <h1 class="post-title">Neural Network Pruning &amp; Spurious Correlations</h1>
           <p class="post-description">
-            CS260D: Machine Learning with Distributional Shifts &mdash; UCLA
+            CS260D: Machine Learning with Distributional Shifts , UCLA
           </p>
         </header>
 
         <article>
           <p>
-            Investigated how <strong>neural network pruning</strong> affects models trained on datasets with spurious correlations&mdash;undesirable associations between class-irrelevant features and labels. While deep networks can exploit these shortcuts to achieve high average accuracy, they suffer poor <strong>worst-group accuracy</strong> on samples without the spurious feature. This work studies whether strategic pruning can mitigate this vulnerability across both supervised and contrastive learning settings.
+            Investigated how <strong>neural network pruning</strong> affects models trained on datasets with spurious correlations,undesirable associations between class-irrelevant features and labels. While deep networks can exploit these shortcuts to achieve high average accuracy, they suffer poor <strong>worst-group accuracy</strong> on samples without the spurious feature. This work studies whether strategic pruning can mitigate this vulnerability across both supervised and contrastive learning settings.
           </p>
 
           <h4>Problem Setting</h4>
@@ -70,7 +70,7 @@
           <ul>
             <li><strong>Dataset:</strong> SpuCo MNIST with controlled spurious feature correlations</li>
             <li><strong>Model:</strong> SpuCoModel LeNet (2 convolutional + 2 fully connected layers)</li>
-            <li><strong>Training:</strong> Just Train Twice (JTT) &mdash; initial ERM training, error set identification, upsampled retraining</li>
+            <li><strong>Training:</strong> Just Train Twice (JTT) , initial ERM training, error set identification, upsampled retraining</li>
             <li><strong>Pruning:</strong> Layer-by-layer magnitude-based pruning at varying ratios (0 to 1)</li>
           </ul>
 
@@ -104,6 +104,51 @@
             <li>At <strong>0.6 magnitude pruning</strong>: middle-layer (Layer 2) pruning pushes validation accuracy above training (~83%), suggesting removal of spurious feature pathways.</li>
             <li>At <strong>0.9 magnitude pruning</strong>: last-layer pruning achieves maximum validation accuracy (~83.5%).</li>
           </ul>
+
+          <div class="row mt-3 mb-3">
+            <div class="col-md-4 mb-3">
+              <img src="/assets/img/pruning_lenet4.png" class="img-fluid rounded" alt="LeNet-4 architecture" />
+              <p class="mt-1"><em>LeNet-4 architecture used for supervised learning experiments on SpuCo MNIST.</em></p>
+            </div>
+            <div class="col-md-4 mb-3">
+              <img src="/assets/img/pruning_spuco_sl.png" class="img-fluid rounded" alt="SpuCo MNIST supervised learning" />
+              <p class="mt-1"><em>Supervised learning results on SpuCo MNIST: accuracy vs. pruning ratio across different layers.</em></p>
+            </div>
+            <div class="col-md-4 mb-3">
+              <img src="/assets/img/pruning_spuco_2.png" class="img-fluid rounded" alt="SpuCo MNIST additional results" />
+              <p class="mt-1"><em>Worst-group accuracy analysis showing the effect of pruning on spurious correlation robustness.</em></p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-4 mb-3">
+              <img src="/assets/img/pruning_cl_dataset.jpg" class="img-fluid rounded" alt="Contrastive learning dataset" />
+              <p class="mt-1"><em>Custom MNIST dataset with added color channels (yellow, red, green, blue) as spurious features.</em></p>
+            </div>
+            <div class="col-md-4 mb-3">
+              <img src="/assets/img/pruning_cl_unpruned.jpg" class="img-fluid rounded" alt="Unpruned contrastive learning" />
+              <p class="mt-1"><em>Contrastive learning embeddings without pruning: clusters show entanglement with spurious color features.</em></p>
+            </div>
+            <div class="col-md-4 mb-3">
+              <img src="/assets/img/pruning_cl_06.jpg" class="img-fluid rounded" alt="Contrastive learning at 0.6 pruning" />
+              <p class="mt-1"><em>At 0.6 pruning: middle-layer pruning pushes validation accuracy above training (~83%), suggesting removal of spurious pathways.</em></p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-4 mb-3">
+              <img src="/assets/img/pruning_cl_09.jpg" class="img-fluid rounded" alt="Contrastive learning at 0.9 pruning" />
+              <p class="mt-1"><em>At 0.9 pruning: last-layer pruning achieves maximum validation accuracy (~83.5%).</em></p>
+            </div>
+            <div class="col-md-4 mb-3">
+              <img src="/assets/img/pruning_results_1.png" class="img-fluid rounded" alt="Pruning results 1" />
+              <p class="mt-1"><em>Layer-wise pruning sensitivity analysis across different pruning ratios.</em></p>
+            </div>
+            <div class="col-md-4 mb-3">
+              <img src="/assets/img/pruning_results_2.png" class="img-fluid rounded" alt="Pruning results 2" />
+              <p class="mt-1"><em>Comparison of pruning strategies on worst-group vs. average accuracy.</em></p>
+            </div>
+          </div>
 
           <h4>Conclusions</h4>
           <p>

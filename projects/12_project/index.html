@@ -73,7 +73,7 @@
             \]
           </div>
 
-          <h4>Controller C &mdash; Minimal Robust Standing</h4>
+          <h4>Controller C: Minimal Robust Standing</h4>
           <p>
             Foundation layer with tight PD control and a <strong>60% torque-rate clamp</strong> to suppress limit-cycle oscillations. A single static standing pose validates kinematics and joint sign conventions. On contact loss, all torques are zeroed to let gravity settle the robot.
           </p>
@@ -83,7 +83,7 @@
             <li>Handles gentle perturbations only (&lt;0.1 m push)</li>
           </ul>
 
-          <h4>Controller A &mdash; Layered Reflex Cascade</h4>
+          <h4>Controller A: Layered Reflex Cascade</h4>
           <p>
             Introduces a <strong>three-tier reflex hierarchy</strong> mirroring human balance recovery:
           </p>
@@ -96,7 +96,7 @@
             A <strong>0.15 s dwell timer</strong> between FSM transitions prevents mode-flapping under oscillatory disturbances. If the stepping strategy fails to reduce error within 50 ms, the controller automatically falls back to the hip strategy.
           </p>
 
-          <h4>Controller B &mdash; Full Fall-Recovery Pipeline</h4>
+          <h4>Controller B: Full Fall-Recovery Pipeline</h4>
           <p>
             Extends the reflex cascade with trajectory-free fall handling and a complete stand-up sequence:
           </p>
@@ -110,7 +110,7 @@
             A <code>TelemetryBuffer</code> logs state, capture-point error, and COM-BoS margin at each timestep for post-hoc analysis.
           </p>
 
-          <h4>Controller D &mdash; Full-Body Dynamic Balance</h4>
+          <h4>Controller D: Full-Body Dynamic Balance</h4>
           <p>
             The most capable controller, employing <strong>five coordinated strategies</strong> activated by capture-point error thresholds:
           </p>
@@ -131,8 +131,8 @@
           <table>
             <tr><th>Metric</th><th>C</th><th>A</th><th>B</th><th>D</th></tr>
             <tr><td>FSM states</td><td>1</td><td>4</td><td>11</td><td>6&ndash;7</td></tr>
-            <tr><td>Capture-point logic</td><td>&mdash;</td><td>Lateral</td><td>Lateral + predictive</td><td>Lateral + stepping</td></tr>
-            <tr><td>Impact mitigation</td><td>&mdash;</td><td>&mdash;</td><td>Knees + arms</td><td>Pre-impact pose</td></tr>
+            <tr><td>Capture-point logic</td><td>-</td><td>Lateral</td><td>Lateral + predictive</td><td>Lateral + stepping</td></tr>
+            <tr><td>Impact mitigation</td><td>-</td><td>-</td><td>Knees + arms</td><td>Pre-impact pose</td></tr>
             <tr><td>Max push survived</td><td>0.1 m</td><td>0.25 m CP</td><td>0.5 m fall + get-up</td><td>0.35 m CP</td></tr>
             <tr><td>Peak torque</td><td>&lt;20 Nm</td><td>&lt;60 Nm</td><td>&lt;120 Nm</td><td>&lt;200 Nm</td></tr>
           </table>

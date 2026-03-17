@@ -7,10 +7,10 @@
 /* --- Color System --- */
 :root {
   --global-bg-color: #0d0d0d;
-  --global-code-bg-color: rgba(230, 57, 70, 0.06);
+  --global-code-bg-color: rgba(212, 165, 116, 0.06);
   --global-text-color: #d4d4d4;
   --global-text-color-light: #777;
-  --global-theme-color: #e63946;
+  --global-theme-color: #d4a574;
   --global-hover-color: #2ec4b6;
   --global-footer-bg-color: #080808;
   --global-footer-text-color: #555;
@@ -22,10 +22,10 @@
 
 html[data-theme=dark] {
   --global-bg-color: #0d0d0d;
-  --global-code-bg-color: rgba(230, 57, 70, 0.06);
+  --global-code-bg-color: rgba(212, 165, 116, 0.06);
   --global-text-color: #d4d4d4;
   --global-text-color-light: #777;
-  --global-theme-color: #e63946;
+  --global-theme-color: #d4a574;
   --global-hover-color: #2ec4b6;
   --global-footer-bg-color: #080808;
   --global-footer-text-color: #555;
@@ -94,7 +94,7 @@ pre, code {
 
 .card:hover {
   transform: translateY(-3px);
-  border-color: rgba(230, 57, 70, 0.25) !important;
+  border-color: rgba(212, 165, 116, 0.25) !important;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -182,19 +182,19 @@ footer.fixed-bottom {
 
 /* --- Blockquote --- */
 blockquote {
-  border-left: 2px solid #e63946 !important;
-  background: rgba(230, 57, 70, 0.04) !important;
+  border-left: 2px solid #d4a574 !important;
+  background: rgba(212, 165, 116, 0.04) !important;
   border-radius: 0 4px 4px 0;
   padding: 0.75em 1.25em !important;
 }
 
 /* --- Progress Bar --- */
 progress::-webkit-progress-value {
-  background-color: #e63946;
+  background-color: #d4a574;
 }
 
 progress::-moz-progress-bar {
-  background-color: #e63946;
+  background-color: #d4a574;
 }
 
 /* --- Images in articles --- */
@@ -216,11 +216,11 @@ table {
 }
 
 table th {
-  background: rgba(230, 57, 70, 0.08);
+  background: rgba(212, 165, 116, 0.08);
   font-weight: 600;
   padding: 0.75rem 1rem;
   text-align: left;
-  border-bottom: 2px solid rgba(230, 57, 70, 0.2);
+  border-bottom: 2px solid rgba(212, 165, 116, 0.2);
 }
 
 table td {
@@ -258,7 +258,7 @@ article li {
 
 /* --- Selection color --- */
 ::selection {
-  background: rgba(230, 57, 70, 0.3);
+  background: rgba(212, 165, 116, 0.3);
   color: #fff;
 }
 
@@ -305,7 +305,7 @@ pre {
 }
 
 code {
-  color: #e63946;
+  color: #d4a574;
 }
 
 /* --- Responsive adjustments --- */

@@ -121,13 +121,69 @@
             A <strong>command mux</strong> node arbitrates between emergency stop, teleop override, and diffusion policy outputs. The priority chain (E-stop &gt; teleop &gt; DP) ensures safe operation during autonomous execution.
           </p>
 
-          <h4>Key Implementation Details</h4>
-          <ul>
-            <li><strong>CAN bus configuration:</strong> Both CAN adapters must be UP at 1&nbsp;Mbit/s before arm initialization. Individual motor enable (<code>EnableArm(1-6)</code>) replaces the grouped <code>EnableArm(7)</code> call to prevent unresponsive joints.</li>
-            <li><strong>Joint 3 constraint:</strong> The elbow joint has an asymmetric range of +2&deg; to &minus;170&deg;, requiring negative-angle task designs.</li>
-            <li><strong>CPU/GPU flexibility:</strong> Conditional <code>.to(device)</code> logic replaces unconditional <code>.cuda()</code> calls, enabling inference on CPU-only edge devices.</li>
-            <li><strong>DDIM acceleration:</strong> Inference steps reduced from 100 to 10 via DDIM sampling, cutting denoising time by 10&times; with minimal quality loss.</li>
-          </ul>
+          <h4>System Architecture: ROS Computation Graph</h4>
+          <p>
+            The full system runs as a set of ROS nodes coordinating data collection, training, and inference. The diagram below shows the complete ROS computation graph during data collection mode, where the master arms are teleoperated while slave arms mirror the motion and cameras record observations.
+          </p>
+          <div class="row mt-3 mb-3">
+            <div class="col-md-12">
+              <img src="/assets/img/bimanual_rosgraph.png" class="img-fluid rounded" alt="ROS computation graph" />
+              <p class="mt-1"><em>ROS computation graph showing the full system topology during data collection. Arm drivers, camera nodes, and the data recorder all communicate via ROS topics.</em></p>
+            </div>
+          </div>
+
+          <h4>Data Collection Pipeline</h4>
+          <p>
+            The data collection workflow proceeds as follows:
+          </p>
+          <ol>
+            <li>Initialize CAN bus interfaces for all four arms (both CAN adapters at 1 Mbit/s)</li>
+            <li>Launch master arms in passive mode (<code>_mode:=0</code>) and slave arms in active mode (<code>_mode:=1</code>)</li>
+            <li>Start three RealSense camera nodes for synchronized multi-view capture</li>
+            <li>Operator performs the manipulation task on master arms; slave arms mirror in real-time</li>
+            <li>Joint states (14-dim) and camera frames are recorded to ROS bags</li>
+            <li>Post-processing converts bags to HDF5 format for training</li>
+          </ol>
+          <div class="row mt-3 mb-3">
+            <div class="col-md-6">
+              <img src="/assets/img/bimanual_episode_qpos.png" class="img-fluid rounded" alt="Episode joint positions" />
+              <p class="mt-1"><em>Joint positions for a recorded episode, showing coordinated motion of both arms during a bimanual task.</em></p>
+            </div>
+            <div class="col-md-6">
+              <img src="/assets/img/bimanual_episode_action.png" class="img-fluid rounded" alt="Episode actions" />
+              <p class="mt-1"><em>Base actions (velocity commands) during the same episode, with synchronized left and right arm control.</em></p>
+            </div>
+          </div>
+
+          <h4>Training Pipeline</h4>
+          <p>
+            Training uses the collected HDF5 datasets with the following steps:
+          </p>
+          <ol>
+            <li>Load episode data: multi-view images, joint states, and action labels</li>
+            <li>Apply data augmentation (random crop, color jitter) to camera views</li>
+            <li>Sample random diffusion timesteps and add noise to ground-truth action chunks</li>
+            <li>Forward pass through ResNet-18 encoders (per camera), proprioception MLP, and conditional U-Net</li>
+            <li>Compute MSE loss between predicted and actual noise, backpropagate</li>
+          </ol>
+          <div class="row mt-3 mb-3">
+            <div class="col-md-8">
+              <img src="/assets/img/bimanual_train_loss.png" class="img-fluid rounded" alt="Training and validation loss" />
+              <p class="mt-1"><em>Training and validation loss curves over training epochs, showing convergence of the diffusion policy model.</em></p>
+            </div>
+          </div>
+
+          <h4>Inference Pipeline</h4>
+          <p>
+            At inference time, the system operates in a closed loop:
+          </p>
+          <ol>
+            <li>Capture current multi-view images and joint states</li>
+            <li>Encode observations through frozen ResNet-18 and proprioception MLP</li>
+            <li>Run 10 DDIM denoising steps (reduced from 100 for 10&times; speed-up) to generate an action chunk of 16 timesteps</li>
+            <li>Execute the first 8 steps of the chunk, then re-plan (action chunking)</li>
+            <li>A <strong>command mux</strong> node arbitrates between emergency stop, teleop override, and diffusion policy outputs with priority chain: E-stop &gt; teleop &gt; DP</li>
+          </ol>
 
           <h4>System Specifications</h4>
           <table>
