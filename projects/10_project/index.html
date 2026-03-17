@@ -144,16 +144,6 @@
             <li>Joint states (14-dim) and camera frames are recorded to ROS bags</li>
             <li>Post-processing converts bags to HDF5 format for training</li>
           </ol>
-          <div class="row mt-3 mb-3">
-            <div class="col-md-6">
-              <img src="/assets/img/bimanual_episode_qpos.png" class="img-fluid rounded" alt="Episode joint positions" />
-              <p class="mt-1"><em>Joint positions for a recorded episode, showing coordinated motion of both arms during a bimanual task.</em></p>
-            </div>
-            <div class="col-md-6">
-              <img src="/assets/img/bimanual_episode_action.png" class="img-fluid rounded" alt="Episode actions" />
-              <p class="mt-1"><em>Base actions (velocity commands) during the same episode, with synchronized left and right arm control.</em></p>
-            </div>
-          </div>
 
           <h4>Training Pipeline</h4>
           <p>
@@ -166,12 +156,6 @@
             <li>Forward pass through ResNet-18 encoders (per camera), proprioception MLP, and conditional U-Net</li>
             <li>Compute MSE loss between predicted and actual noise, backpropagate</li>
           </ol>
-          <div class="row mt-3 mb-3">
-            <div class="col-md-8">
-              <img src="/assets/img/bimanual_train_loss.png" class="img-fluid rounded" alt="Training and validation loss" />
-              <p class="mt-1"><em>Training and validation loss curves over training epochs, showing convergence of the diffusion policy model.</em></p>
-            </div>
-          </div>
 
           <h4>Inference Pipeline</h4>
           <p>
